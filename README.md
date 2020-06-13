@@ -32,7 +32,7 @@ An app where users keep track of their pet's health.
 |Method|URL|Description|
 |---|---|---|
 GET | /login | redirects to / if user logged in. Renders auth/login
-POST | /login | redirects to / if user logged in
+POST | /login | redirects to /user-profile if user logged in
 
 ```
 body:
@@ -42,6 +42,7 @@ body:
 |Method|URL|Description|
 |---|---|---|
 GET | /signup | Renders auth/signup
+POST | /signup | Redirects to /user-profile
 
 ```
 body:
