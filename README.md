@@ -55,8 +55,8 @@ body:
 |Method|URL|Description|
 |---|---|---|
 GET | /user-profile | renders user profile. If the user is not logged in, render homepage. 
-GET | /edit/user-profile | renders user profile edit page. If the user is not logged in, render homepage. 
-POST | /edit/user-profile | update user profile. Redirect /user-profile
+GET | /edit/user-profile/Id | renders user profile edit page. If the user is not logged in, render homepage. 
+POST | /edit/user-profile/Id | update user profile. Redirect /user-profile
 POST | /logout | redirects to /
 ```
 body:
@@ -70,9 +70,10 @@ body:
 ```
 |Method|URL|Description|
 |---|---|---|
-GET | /pet-profile:Id | renders pet profile page
-GET | /edit/pet-profile:Id | renders pet profile edit page
-POST | /edit/pet-profile:Id | update pet profile. Redirect /pet-profile:Id
+GET | /pets | renders user's pets
+GET | /pet-profile/Id | renders pet profile page
+GET | /edit/pet-profile/Id | renders pet profile edit page
+POST | /edit/pet-profile/Id | update pet profile. Redirect /pet-profile:Id
 POST | /logout | redirects to /
 ```
 body:
@@ -86,9 +87,10 @@ body:
 ```
 |Method|URL|Description|
 |---|---|---|
-GET | /appointment:Id | renders appointment page
-GET | /edit/appointment:Id | renders pet profile edit page
-POST | /edit/appointment:Id | update appointment. Redirect /user-profile
+GET | /appointment | renders user's appointments 
+GET | /appointment/Id | renders appointment page
+GET | /edit/appointment/Id | renders pet profile edit page
+POST | /edit/appointment/Id | update appointment. Redirect /user-profile
 GET | /create/appointment | renders appointment create page
 POST | /create/appointment | saves appointment. Redirect /user-profile
 POST | /logout | redirects to /
@@ -136,6 +138,7 @@ Appointment model
 ![Home](private/wireframes/home.png)
 ![Signup](private/wireframes/signup.png)
 ![Login](private/wireframes/login.png)
+![user-profile-mobile](private/wireframes/home-mobile.png)
 ![User-profile](private/wireframes/profile-general.png)
 ![edit-user](private/wireframes/user-profile-edit.png)
 ![pet-profile](private/wireframes/pet-profile-edit.png)
