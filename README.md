@@ -132,10 +132,17 @@ Appointment model
 - comments: String
 ```
 ## Wire Frames
-Home![Home](private/wireframes/home.png)
-Signup ![Signup](private/wireframes/signup.png)
-Login ![Login](private/wireframes/login.png)
-User profile ![User-profile](private/wireframes/profile-general.png)
-User profile edit ![edit-user](private/wireframes/user-profile-edit.png)
-Pet profile ![pet-profile](private/wireframes/pet-profile-edit.png)
-Create/edit appointment ![appointment](private/wireframes/appointment-create.png)
+Home
+![Home](private/wireframes/home.png)
+Signup
+![Signup](private/wireframes/signup.png)
+Login
+![Login](private/wireframes/login.png)
+User profile
+![User-profile](private/wireframes/profile-general.png)
+User profile edit
+![edit-user](private/wireframes/user-profile-edit.png)
+Pet profile
+![pet-profile](private/wireframes/pet-profile-edit.png)
+Create/edit appointment
+![appointment](private/wireframes/appointment-create.png)
