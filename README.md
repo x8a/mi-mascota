@@ -8,7 +8,7 @@ Santi Casa - Alba Olveros
 
 ## Description
 
-An app where users keep track if their pet's health.
+An app where users keep track of their pet's health.
  
 ## User Stories
 
