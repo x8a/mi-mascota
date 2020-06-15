@@ -13,6 +13,8 @@ const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
 
 const app = express();
+const createSession = require('./configs/session.config');
+createSession(app);
 
 // Middleware Setup
 app.use(logger('dev'));
@@ -47,7 +49,9 @@ app.locals.title = 'Mi Mascota';
 
 
 const index = require('./routes/index.routes');
+const authRouter = require('./routes/auth.routes');
 app.use('/', index);
+app.use('/', authRouter);
 
 
 module.exports = app;

@@ -4,16 +4,16 @@ const {
 } = require('mongoose');
 
 const userSchema = new Schema({
-  firstname: {
+  firstName: {
     type: String,
     trim: true,
-    required: [true, 'Required']
+    required: [true, 'Name is required.']
   },
   pets: [{type: Schema.Types.ObjectId, ref: 'Pet'}],
-  lastname: {
+  lastName: {
     type: String,
     trim: true,
-    required: [true, 'Required']
+    required: [true, 'Last name is required.']
   },
   username: {
     type: String,
@@ -33,11 +33,14 @@ const userSchema = new Schema({
   passwordHash: {
     type: String,
     required: [true, 'Password is required.']
-  }, 
+  }
+  /*
+  ,
   timestamps: {
     createdAt: 'created_at',
     updatedAt: 'updated_at'
   }
+  */
 });
 
 module.exports = model('User', userSchema);

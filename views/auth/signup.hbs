@@ -1,0 +1,30 @@
+<div id="signup">
+  <h2>Create your account</h2>
+  <form action="/signup" method="POST">
+    <label for="input-name">Name</label>
+    <input type="text" id="input-name" name="firstName" placeholder="Your name" />
+
+    <label for="input-last-name">Last name</label>
+    <input type="text" id="input-last-name" name="lastName" placeholder="Your last name" />
+  
+    <label for="input-username">Username</label>
+    <input type="text" id="input-username" name="username" placeholder="Your username" />
+
+    <label for="input-email">Email</label>
+    <input type="email" id="input-email" name="email" placeholder="Your email" />
+
+    <label for="input-password">Password</label>
+    <input type="password" id="input-password" name="password" placeholder="********" />
+
+    <label for="confirm-password">Confirm password</label>
+    <input type="password" id="input-confirm-password" name="confirm-password" placeholder="********" />
+
+    <button type="submit">Create account</button>
+    <button href="/">Cancel</button>
+
+    {{#if errorMessage}}
+    <p class="error">{{errorMessage}}</p>
+    {{/if}}
+
+  </form>
+</div>

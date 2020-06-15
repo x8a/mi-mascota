@@ -28,4 +28,4 @@ const petSchema = new Schema ({
   appointments: [{type: Schema.Types.ObjectId, ref: 'Appointment'}]
 })
 
-module.exports = mongoose.model('Pet', petSchema)
+module.exports = model('Pet', petSchema);
