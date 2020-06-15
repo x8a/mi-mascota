@@ -10,11 +10,14 @@ const saltRounds = 10;
 
 router.get("/signup", (req, res) => res.render("auth/signup"));
 
-router.get("/user-profile", (req, res) => {
-  res.render("user/profile", {
-    userInSession: req.session.currentUser,
-  });
+router.get('/login', (req, res, next) => {
+  res.render('auth/login')
 });
+
+router.get('/logout', (req, res, next) => {
+  req.session.destroy();
+  res.redirect('/')
+})
 
 router.post("/signup", (req, res, next) => {
   const { firstName, lastName, username, email, password } = req.body;
@@ -68,5 +71,32 @@ router.post("/signup", (req, res, next) => {
       }
     });
 });
+
+router.post('/login', async (req, res, next) => {
+  const {username,password} = req.body;
+  if (!username || !password) {
+    res.render('auth/login', {
+      errorMessage: 'Please enter both, email and password to login'
+    })
+    return;
+  }
+  try {
+    user = await User.findOne({username})
+    if(!user) {
+      res.render('auth/login', {
+        errorMessage: "This user doesn't exist"
+      })
+    } else if (bcrypt.compareSync(password, user.passwordHash)) {
+    req.session.currentUser = user;
+    res.redirect('/user-profile')
+    } else {
+    res.render('auth/login', {
+      errorMessage: 'Incorrect Password.'
+    });
+  }
+ } catch (err) {
+   next(err)
+ } 
+})
 
 module.exports = router;
