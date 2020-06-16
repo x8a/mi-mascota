@@ -12,9 +12,9 @@
   <label for="breed">Breed: </label>
   <input type="text" name="breed" required/>
   <label for="birthdate">Birth date:</label>
-  <input type="date" name="birthdate" placeholder="It can be an approximate :)" required/> 
+  <input type="date" id="petBirth" name="birthdate" placeholder="It can be an approximate :)" required/> 
   <label for="age">Age: </label> 
-  <input type="number" name="age" min="1" required/>
+  <input type="number" id="petAge" name="age" min="1" disabled required/>
   <button type="submit">Add pet</button> <!-- Luego es input estara en disabled para calcular la edad en base a la fecha de nacimiento -->
 </form>
 <button>
@@ -23,6 +23,7 @@
 {{#if errorMessage}}
 <p>{{errorMessage}}</p>
 {{/if}}
+<script src="/javascripts/addPet.js"></script>
 {{else}}
 <p>Please log in first to access this page.</p>
 {{/if}}
