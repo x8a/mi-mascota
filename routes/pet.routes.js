@@ -28,7 +28,7 @@ router.post('/user-profile/addPet', async (req, res, next) => {
   } catch (error) {
     if (error instanceof mongoose.Error.ValidationError){
       res.status(500).render('user/createPets', {
-        errorMessage: `We could add your pet. Please check that all fields are correct.`,
+        errorMessage: `We couldn't add your pet. Please check that all fields are correct.`,
         userInSession: req.session.currentUser,
       })
     } else {
