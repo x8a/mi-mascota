@@ -1,0 +1,15 @@
+<h2>Pet Profile Page</h2>
+
+{{#if userInSession}}
+
+<p>{{pet.name}}</p>
+<p>{{pet.animal}}</p>
+<p>{{pet.breed}}</p>
+<p>{{pet.age}}</p>
+
+{{#with pet}}
+<p>{{name}}</p>
+{{/with}}
+
+
+{{/if}}
