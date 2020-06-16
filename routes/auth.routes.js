@@ -76,7 +76,7 @@ router.post('/login', async (req, res, next) => {
   const {username,password} = req.body;
   if (!username || !password) {
     res.render('auth/login', {
-      errorMessage: 'Please enter both, email and password to login'
+      errorMessage: 'Please enter both, email and password, to login'
     })
     return;
   }

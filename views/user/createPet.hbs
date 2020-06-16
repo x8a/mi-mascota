@@ -1,0 +1,28 @@
+
+{{#if userInSession}}
+<h2>Add a pet page</h2>
+<form action="/user-profile/addPet" method="POST">
+  <label for="name">Name: </label>
+  <input type="text" name="name" required/>
+  <label for="animal">Type: </label>
+  <select name="animal" required>
+    <option value="cat">Cat</option>
+    <option value="dog">Dog</option>
+  </select>
+  <label for="breed">Breed: </label>
+  <input type="text" name="breed" required/>
+  <label for="birthdate">Birth date:</label>
+  <input type="date" name="birthdate" placeholder="It can be an approximate :)" required/> 
+  <label for="age">Age: </label> 
+  <input type="number" name="age" min="1" required/>
+  <button type="submit">Add pet</button> <!-- Luego es input estara en disabled para calcular la edad en base a la fecha de nacimiento -->
+</form>
+<button>
+  <a href="/user-profile">Back</a>
+</button>
+{{#if errorMessage}}
+<p>{{errorMessage}}</p>
+{{/if}}
+{{else}}
+<p>Please log in first to access this page.</p>
+{{/if}}

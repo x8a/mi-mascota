@@ -50,8 +50,12 @@ app.locals.title = 'Mi Mascota';
 
 const index = require('./routes/index.routes');
 const authRouter = require('./routes/auth.routes');
+const userRouter = require('./routes/user.routes')
+const petRouter = require('./routes/pet.routes')
 app.use('/', index);
 app.use('/', authRouter);
+app.use('/', userRouter);
+app.use('/', petRouter);
 
 
 module.exports = app;
