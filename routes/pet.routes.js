@@ -43,12 +43,23 @@ router.post("/user-profile/addPet", async (req, res, next) => {
 router.get("/pet-profile/:petId", async (req, res, next) => {
   try {
     const pet = await Pet.find({ _id: req.params.petId});
-    res.render("pet/petDetails", {pet});
-    console.log(pet)
-    console.log(pet[0].name)
-  } catch (e) {
-    next(e);
+    res.render("pet/petDetails", {pet: pet[0], userInSession: req.session.currentUser});
+  } catch (error) {
+    next(error);
   }
 });
+
+router.post("/delete/pet/:petId", async (req, res, next) => {
+try{
+  const owner = req.session.currentUser._id;
+  let myPets = await Pet.find({owner: owner});
+  const deletedPet = await Pet.findByIdAndDelete(req.params.petId)
+  myPets.splice(myPets.indexOf(deletedPet), 1)
+  const user = await User.findOneAndUpdate({_id: owner}, {pets: myPets});
+  res.redirect("/user-profile");
+} catch (error) {
+  next(error)
+}
+})
 
 module.exports = router;

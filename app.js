@@ -35,6 +35,7 @@ require('./configs/db.config');
 //require Session configuration
 require('./configs/session.config')(app);
 
+//register views, partials and static content
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 hbs.registerPartials(path.join(__dirname, "/views/partials"));
@@ -47,7 +48,7 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.png')));
 app.locals.title = 'Mi Mascota';
 
 
-
+//Routes
 const index = require('./routes/index.routes');
 const authRouter = require('./routes/auth.routes');
 const userRouter = require('./routes/user.routes')

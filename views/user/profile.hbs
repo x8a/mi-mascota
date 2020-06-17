@@ -8,10 +8,14 @@
   <p>My pets:</p>
   <ul>
     {{#each myPets}}
-    <li><a href="/pet-profile/{{this._id}}">{{this.name}}</a></li>
+    <li>
+      <a href="/pet-profile/{{this._id}}">{{this.name}}</a>
+      <form action="/delete/pet/{{this._id}}" method="POST">
+        <button type="submit" class="btn btn-danger">X</button>
+      </form>
+    </li>
     {{/each}}
   </ul>
-  
   <button>
     <a href="/user-profile/addPet">Add a pet</a>
   </button>

@@ -2,14 +2,14 @@
 
 {{#if userInSession}}
 
-<p>{{pet.name}}</p>
-<p>{{pet.animal}}</p>
-<p>{{pet.breed}}</p>
-<p>{{pet.age}}</p>
-
 {{#with pet}}
 <p>{{name}}</p>
+<p>{{animal}}</p>
+<p>{{breed}}</p>
+<p>{{age}}</p>
+<button><a href="/user-profile">Back</a></button>
+<form action="/delete/pet/{{this._id}}" method="POST">
+  <button type="submit" class="btn-danger">Delete</button>
+</form>
 {{/with}}
-
-
 {{/if}}

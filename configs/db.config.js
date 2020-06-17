@@ -7,7 +7,8 @@ mongoose
   {
     useCreateIndex: true,
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false
   })
 .then(db => {
   console.log(`Connected to Mongo! Database name: "${db.connections[0].name}"`)

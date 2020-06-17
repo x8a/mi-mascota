@@ -74,6 +74,7 @@ GET | /pets | renders user's pets
 GET | /pet-profile/Id | renders pet profile page
 GET | /edit/pet-profile/Id | renders pet profile edit page
 POST | /edit/pet-profile/Id | update pet profile. Redirect /pet-profile:Id
+POST | /petDelete/Id | delete a pet profile. Redirect to /user-profile
 POST | /logout | redirects to /
 ```
 body:
