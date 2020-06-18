@@ -14,15 +14,18 @@
     <br>
     <input type="text" name="username" class="form-input" placeholder="Username" value="{{userInSession.username}}"/>
     <br>
-    <label for="password">Password</label>
+    <label for="password">New password</label>
     <br>
-    <input type="password" name="password" class="form-input" placeholder="Enter your password"/>
+    <input type="password" name="password" class="form-input" placeholder="Enter a new password"/>
     <br>
-    <label for="newPassword">New password</label>
+    <label for="newPassword">Confirm new password</label>
     <br>
-    <input type="password" name="newPassword" class="form-input" placeholder="Enter a new password"/>
+    <input type="password" name="newPassword" class="form-input" placeholder="Confirm the new password"/>
     <br>
     <br>
+    {{#if errorMessage}}
+    <p class="error">{{errorMessage}}</p>
+    {{/if}}
     <input type="submit" value="Save" class="btn btn-primary"/>
     <a href="/user-profile" class="btn btn-danger">Cancel</a>
 </form>
