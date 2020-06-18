@@ -1,6 +1,8 @@
 <div class="container">
   <h1>Welcome to {{title}}!</h1>
+  {{#if userInSession}}
   <a href="/user-profile" class="btn btn-primary">My profile</a>
+  {{/if}}
 </div>
 
 

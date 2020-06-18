@@ -6,7 +6,7 @@
   <p>Name {{ userInSession.firstName }}</p>
   <p>Last name {{ userInSession.lastName }}</p>
   <div>
-    <a href="edit/user-profile/{{userInSession._id}}"><img id="edit-icon" src="../../images/edit-icon.png"></a>
+    <a href="edit/user-profile"><img id="edit-icon" src="../../images/edit-icon.png"></a>
   </div>
   <p>My pets:</p>
   <ul>
@@ -19,7 +19,7 @@
     </li>
     {{/each}}
   </ul>
-  <button>
+  <button class="btn btn-primary">
     <a href="/user-profile/addPet">Add a pet</a>
   </button>
 {{else}}
