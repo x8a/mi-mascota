@@ -26,10 +26,11 @@ router.get("/edit/user-profile/:userId", (req, res, next) => {
 
 router.post("/edit/user-profile/:userId", async (req, res, next) => {
   try{
-    const {password, newPassword} = req.body;
+    console.log(req.body)
+    const {name,password, newPassword} = req.body;
+    console.log(`Este es el password que vino ---> ${password} y el nombre ${name}`);
     const saltRounds = 10; // Cost of generating the hash
     const salt = bcrypt.genSaltSync(saltRounds); // Key to generate the hash
-
     const passHash = bcrypt.hashSync(password, salt); // Generate the hash with a password and the salt
     const newPassHash = bcrypt.hashSync(newPassword, salt); // Generate the hash with a password and the salt
     const verifyPass = bcrypt.compareSync(passHash, newPassHash); // Compare the two passwords

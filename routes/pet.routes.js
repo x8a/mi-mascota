@@ -52,10 +52,11 @@ router.get("/pet-profile/:petId", async (req, res, next) => {
 router.post("/delete/pet/:petId", async (req, res, next) => {
 try{
   const owner = req.session.currentUser._id;
-  let myPets = await Pet.find({owner: owner});
-  const deletedPet = await Pet.findByIdAndDelete(req.params.petId)
-  myPets.splice(myPets.indexOf(deletedPet), 1)
-  const user = await User.findOneAndUpdate({_id: owner}, {pets: myPets});
+  const {petId} = req.params;
+  const myPets = await Pet.find({owner});
+  const filterPets = myPets.filter((currPet) => currPet._id != petId);
+  const updateUserPets = await User.findOneAndUpdate({_id: owner}, {pets: filterPets});
+  const deletedPet = await Pet.findByIdAndDelete(petId)
   res.redirect("/user-profile");
 } catch (error) {
   next(error)
