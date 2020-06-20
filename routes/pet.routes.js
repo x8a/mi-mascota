@@ -57,10 +57,24 @@ try{
   const filterPets = myPets.filter((currPet) => currPet._id != petId);
   const updateUserPets = await User.findOneAndUpdate({_id: owner}, {pets: filterPets});
   const deletedPet = await Pet.findByIdAndDelete(petId)
-  res.redirect("/user-profile");
+  res.redirect("/pets");
 } catch (error) {
   next(error)
 }
+})
+
+router.get("/pets", async (req, res,next) => {
+  try {
+    const myPets = await Pet.find({
+      owner: req.session.currentUser._id
+    });
+    res.render("pet/allPets", {
+      userInSession: req.session.currentUser,
+      myPets: myPets
+    });
+  } catch (e) {
+    next(e);
+  }
 })
 
 module.exports = router;

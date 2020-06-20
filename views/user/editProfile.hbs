@@ -1,41 +1,44 @@
 <h2>Edit Profile</h2>
 
 <div>
-    <form action="/edit/user-profile" method="POST">
+    <form class="form-group" action="/edit/user-profile" method="POST">
         <input type="hidden" name="_id" value="{{userInSession._id}}" />
         <label for="firstName">Name</label>
         <br>
-        <input type="text" name="firstName" class="form-input" placeholder="Name" value="{{userInSession.firstName}}" />
+        <input class="form-control" type="text" name="firstName" class="form-input" placeholder="Name" value="{{userInSession.firstName}}" />
         <br>
         <label for="lastName">Last name</label>
         <br>
-        <input type="text" name="lastName" class="form-input" placeholder="Last name" value="{{userInSession.lastName}}" />
+        <input class="form-control" type="text" name="lastName" class="form-input" placeholder="Last name" value="{{userInSession.lastName}}" />
         <br>
         <label for="username">Username</label>
         <br>
-        <input type="text" name="username" class="form-input" placeholder="Username" value="{{userInSession.username}}" />
+        <input class="form-control" type="text" name="username" class="form-input" placeholder="Username" value="{{userInSession.username}}" />
         <br>
         {{#if errorMessage}}
         <p class="error">{{errorMessage}}</p>
         {{/if}}
-        <input type="submit" value="Save" class="btn btn-primary" />
-        <a href="/user-profile" class="btn btn-danger">Cancel</a>
+        <div class="d-flex justify-content-center">
+            <input type="submit" value="Save" class="btn btn-primary mr-2" />
+            <a href="/user-profile" class="btn btn-danger">Cancel</a>
+        </div>
+        
     </form>
 </div>
 
 <div>
-    <form action="/edit/pwd" method="POST" >
+    <form class="form-group" action="/edit/pwd" method="POST" >
         <label for="oldPassword">Old password</label>
         <br>
-        <input type="password" name="oldPassword" id="oldPassword" class="form-input" placeholder="Enter your current password" />
+        <input class="form-control" type="password" name="oldPassword" id="oldPassword" class="form-input" placeholder="Enter your current password" />
         <br>
         <label for="password">New password</label>
         <br>
-        <input type="password" name="newPassword" id="newPassword" class="form-input" placeholder="Enter a new password" />
+        <input class="form-control" type="password" name="newPassword" id="newPassword" class="form-input" placeholder="Enter a new password" />
         <br>
         <label for="newPassword">Confirm new password</label>
         <br>
-        <input type="password" name="confirmPassword" id="confirmPassword" class="form-input" placeholder="Confirm the new password"/><span id="checkMessage"></span>
+        <input class="form-control" type="password" name="confirmPassword" id="confirmPassword" class="form-input" placeholder="Confirm the new password"/><span id="checkMessage"></span>
         <br>
         <input type="submit" value="Save" id="saveButton" class="btn btn-primary" disabled/>
     </form>

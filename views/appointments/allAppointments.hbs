@@ -1,0 +1,15 @@
+
+{{#if userInSession}}
+{{#each petAppointments}}
+<h3 class="card-text">{{this.name}}</h3>
+{{#each appointments}}
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">{{this.title}}</h4>
+    <p class="card-text">{{petAppointments.name}}</p>
+    <p class="card-text">{{this.date}}, {{this.time}}</p>
+  </div>
+</div>
+{{/each}}
+{{/each}}
+{{/if}}

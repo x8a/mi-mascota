@@ -1,27 +1,23 @@
-<h2>User Profile Page</h2>
 
 {{#if userInSession}}
   <h2>Welcome, {{ userInSession.username }}!</h2>
-  <p>Email: {{userInSession.email}}</p>
-  <p>Name {{ userInSession.firstName }}</p>
-  <p>Last name {{ userInSession.lastName }}</p>
-  <div>
-    <a href="edit/user-profile"><img id="edit-icon" src="../../images/edit-icon.png"></a>
+  <div class="container d-flex flex-column align-items-center mt-5"> 
+    <div>
+      <a href="edit/user-profile"><img src="/images/defaultPic.png" alt="editar perfil" width="128px" height="128px" /></a>
+    </div>
+    {{#if myPets}}
+    <a class="btn btn-primary mt-3" href="/pets">Mis mascotas</a>
+    <a class="btn btn-primary mt-3" href="/appointments">Mis citas</a>
+    {{else}}
+    <a class="btn btn-primary mt-3" href="/user-profile/addPet">Add a pet</a>
+    {{/if}}
+    {{else}}
+    <p>You are not logged in.</p>
+    {{/if}}
   </div>
-  <p>My pets:</p>
-  <ul>
-    {{#each myPets}}
-    <li>
-      <a href="/pet-profile/{{this._id}}">{{this.name}}</a>
-      <form action="/delete/pet/{{this._id}}" method="POST">
-        <button type="submit" class="btn btn-danger">X</button>
-      </form>
-    </li>
-    {{/each}}
-  </ul>
-  <button class="btn btn-primary">
-    <a href="/user-profile/addPet">Add a pet</a>
-  </button>
-{{else}}
-  <p>You are not logged in.</p>
-{{/if}}
+
+
+  <!--<div>
+    <a href="edit/user-profile"><img id="edit-icon" src="../../images/edit-icon.png">Editar perfil</a>
+  </div>-->
+ 

@@ -1,0 +1,15 @@
+<a class="btn btn-primary mt-3" href="/user-profile/addPet">Add a pet</a>
+  {{#each myPets}}
+  <div class="card">
+    <a href="/pet-profile/{{this._id}}"><img class="card-img-top" src="/images/defaultPic.png" alt=""></a>
+    <div class="card-body">
+      <h4 class="card-title">{{this.name}}</h4>
+      <p class="card-text">{{this.age}}</p>
+      <form action="/delete/pet/{{this._id}}" method="POST">
+        <button type="submit" class="btn btn-danger">X</button>
+      </form>
+    </div>
+  </div>
+  {{/each}}
+  <a class="btn btn-secondary" href="/user-profile">Mi Perfil</a>
+
