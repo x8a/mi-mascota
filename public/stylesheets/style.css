@@ -1,7 +1,31 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
 #edit-icon {
   width: 30px;
+}
+
+div.petCard {
+  font-size: 1.25rem;
+  padding: 10px;
+  border-top: 1px solid grey;
+  height: 25%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+div.petCard div.petCardImg {
+  height: 100%;
+  width: 40%;
+}
+
+div.petCard div.petCardImg img {
+  height: 100%;
+  width: 100%;
+}
+
+div.petCard div.petCardDetails {
+  text-align: center;
+  width: 60%;
 }

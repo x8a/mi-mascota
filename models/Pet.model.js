@@ -1,6 +1,11 @@
 const {Schema, model} = require('mongoose');
 
 const petSchema = new Schema ({
+  pic: {
+    type: String,
+    trim: true,
+    default: "https://res.cloudinary.com/santic/image/upload/v1592762356/mi-mascota/pet-pics/petDefaultPic_vza4ru.jpg"
+  },
   name: {
     type: String,
     trim: true,

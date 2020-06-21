@@ -1,7 +1,12 @@
 
 {{#if userInSession}}
 <h2>Add a pet page</h2>
-<form class="form-group" action="/user-profile/addPet" method="POST">
+<form class="form-group" action="/addPet" method="POST" enctype="multipart/form-data">
+  <label for="profilePicContainer">Foto (opcional)</label>
+  <div class="custom-file" id="profilePicContainer">
+    <input type="file" class="custom-file-input" id="profilePic" name="pic" accept="image/png, image/jpeg">
+    <label class="custom-file-label form-control" for="profilePic" id="profilePicName">Elige un archivo</label>
+  </div>
   <label for="name">Name: </label>
   <input class="form-control" type="text" name="name" required/>
   <label for="animal">Type: </label>
@@ -22,6 +27,7 @@
 <p>{{errorMessage}}</p>
 {{/if}}
 <script src="/javascripts/createPet/petAge.js"></script>
+<script src="/javascripts/formsScripts/fileName.js"></script>
 {{else}}
 <p>Please log in first to access this page.</p>
 {{/if}}

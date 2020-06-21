@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const User = require("../models/User.model");
 const Pet = require("../models/Pet.model");
 
+
 router.get("/user-profile", async (req, res, next) => {
   try {
     const myPets = await Pet.find({ owner: req.session.currentUser._id });

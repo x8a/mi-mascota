@@ -1,15 +1,22 @@
-<a class="btn btn-primary mt-3" href="/user-profile/addPet">Add a pet</a>
+<h2>Mis mascotas</h2>
+<div class="container">
   {{#each myPets}}
-  <div class="card">
-    <a href="/pet-profile/{{this._id}}"><img class="card-img-top" src="/images/defaultPic.png" alt=""></a>
-    <div class="card-body">
-      <h4 class="card-title">{{this.name}}</h4>
-      <p class="card-text">{{this.age}}</p>
-      <form action="/delete/pet/{{this._id}}" method="POST">
-        <button type="submit" class="btn btn-danger">X</button>
-      </form>
+  <div class="petCard">
+    <div class="petCardImg">
+      <img src="{{this.pic}}" alt="pet picture" width="258px" height="258px">
+    </div>
+    <div class="petCardDetails">
+      <p>{{this.name}}</p>
+      <p>{{this.age}} años</p>
+      <a class="btn btn-warning" href="/pet-profile/{{this._id}}">Editar</a>
     </div>
   </div>
   {{/each}}
-  <a class="btn btn-secondary" href="/user-profile">Mi Perfil</a>
+</div>
+<a class="btn btn-secondary" href="/user-profile">Mi Perfil</a>
 
+ 
+
+<!-- 
+  <span>Photo by <a href="https://unsplash.com/@majomaya?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Yan Laurichesse</a> on <a href="/s/photos/cat-and-dog?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+-->

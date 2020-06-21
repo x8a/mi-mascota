@@ -3,13 +3,14 @@
 {{#if userInSession}}
 
 {{#with pet}}
-<p>{{name}}</p>
-<p>{{animal}}</p>
-<p>{{breed}}</p>
-<p>{{age}}</p>
-<button class="btn btn-primary"><a href="/user-profile">Back</a></button>
+<p>Nombre: {{name}}</p>
+<p>Tipo de mascota: {{animal}}</p>
+<p>Raza: {{breed}}</p>
+<p>Edad: {{age}}</p>
 <form action="/delete/pet/{{this._id}}" method="POST">
-  <button type="submit" class="btn-danger">Delete</button>
+<a class="btn btn-secondary" href="/pets">Back</a>
+  <button type="submit" class=" btn btn-danger">Delete</button>
 </form>
 {{/with}}
 {{/if}}
+<h3>{{errorMessage}}</h3>

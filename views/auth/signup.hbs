@@ -1,6 +1,11 @@
 <div id="signup">
-  <h2>Create your account</h2>
-  <form class="form-group" action="/signup" method="POST">
+  <h3>Crea tu cuenta</h3>
+  <form class="form-group mt-4" action="/signup" method="POST" enctype="multipart/form-data">
+    <label for="profilePicContainer">Foto de perfil (opcional)</label>
+    <div class="custom-file" id="profilePicContainer">
+      <input type="file" class="custom-file-input" id="profilePic" name="profilePic" accept="image/png, image/jpeg">
+      <label class="custom-file-label form-control" for="profilePic" id="profilePicName">Elige un archivo</label>
+    </div>
     <label for="input-name">Name</label>
     <input class="form-control" type="text" id="input-name" name="firstName" placeholder="Your name" />
 
@@ -18,16 +23,16 @@
 
     <label for="confirm-password">Confirm password</label>
     <input class="form-control" type="password" id="confirmPassword" name="confirm-password" placeholder="********" />
+    <span id="checkMessage"></span>
     <div class="mt-4">
-      <button class="btn btn-primary" type="submit">Create account</button>
+      <button class="btn btn-primary" type="submit" id="saveButton" disabled>Create account</button>
       <a class="btn btn-danger" href="/">Cancel</a>
     </div>
-    
-
     {{#if errorMessage}}
     <p class="error">{{errorMessage}}</p>
     {{/if}}
 
   </form>
 </div>
-<script type="text/javascript" src="/javascripts/editUserProfile/checkConfirmPassword.js"></script>
+<script src="/javascripts/editUserProfile/checkConfirmPassword.js"></script>
+<script src="/javascripts/formsScripts/fileName.js"></script>

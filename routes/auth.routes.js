@@ -5,6 +5,7 @@ const router = new Router();
 const User = require("../models/User.model");
 const Pet = require("../models/Pet.model");
 const Appointment = require("../models/Appointment.model");
+const uploadProfilePic = require('../configs/cloudinaryUser')
 
 const saltRounds = 10;
 
@@ -19,8 +20,14 @@ router.get('/logout', (req, res, next) => {
   res.redirect('/')
 })
 
-router.post("/signup", (req, res, next) => {
-  const { firstName, lastName, username, email, password } = req.body;
+router.post("/signup", uploadProfilePic.single('profilepic'), (req, res, next) => {
+  const {
+    firstName,
+    lastName,
+    username,
+    email,
+    password
+  } = req.body;
 
   if (!firstName || !lastName || !username || !email || !password) {
     res.render("auth/signup", {
@@ -45,6 +52,7 @@ router.post("/signup", (req, res, next) => {
     .then(hashedPassword => {
       // Create the user in the db
       return User.create({
+        profilePic: req.file.path,
         firstName: firstName,
         lastName: lastName,
         username: username,

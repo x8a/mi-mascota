@@ -2,6 +2,11 @@ const { Schema, model } = require("mongoose");
 
 const userSchema = new Schema(
   {
+    profilePic: {
+      type: String,
+      trim: true,
+      default: "https://res.cloudinary.com/santic/image/upload/v1592769503/mi-mascota/profile-pics/defaultPic_on0abf.png"
+    },
     firstName: {
       type: String,
       trim: true,

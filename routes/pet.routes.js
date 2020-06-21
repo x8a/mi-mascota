@@ -4,19 +4,22 @@ const router = new Router();
 const User = require("../models/User.model");
 const Pet = require("../models/Pet.model");
 const { db } = require("../models/User.model");
+const uploadPetPic = require('../configs/cloudinaryPet')
 
-router.get("/user-profile/addPet", (req, res, next) => {
+router.get("/addPet", (req, res, next) => {
   res.render("user/createPet", { userInSession: req.session.currentUser });
 });
 
-router.post("/user-profile/addPet", async (req, res, next) => {
-  console.table(req.body);
+
+router.post("/addPet", uploadPetPic.single('pic'), async (req, res, next) => {
   const owner = req.session.currentUser._id;
   const { name, animal, breed, birthdate, age } = req.body;
+  const pic = req.file.path;
   console.log(animal);
   const myPets = await Pet.find({ owner: owner });
   try {
     const petToInsert = new Pet({
+      pic,
       name,
       owner,
       animal,
@@ -27,7 +30,7 @@ router.post("/user-profile/addPet", async (req, res, next) => {
     const pet = await petToInsert.save();
     myPets.push(pet);
     const user = await User.findOneAndUpdate({ _id: owner }, { pets: myPets });
-    res.redirect("/user-profile");
+    res.redirect("/pets");
   } catch (error) {
     if (error instanceof mongoose.Error.ValidationError) {
       res.status(500).render("user/createPets", {
@@ -42,8 +45,16 @@ router.post("/user-profile/addPet", async (req, res, next) => {
 
 router.get("/pet-profile/:petId", async (req, res, next) => {
   try {
-    const pet = await Pet.find({ _id: req.params.petId});
-    res.render("pet/petDetails", {pet: pet[0], userInSession: req.session.currentUser});
+    if(req.session.currentUser) {
+      const pet = await Pet.find({
+        _id: req.params.petId
+      });
+      res.render("pet/petDetails", {
+        pet: pet[0],
+        userInSession: req.session.currentUser
+      });
+    } 
+    res.status(403).render('pet/petDetails', {errorMessage: "Por favor, inicia sesión para acceder a esta página."})
   } catch (error) {
     next(error);
   }

@@ -1,15 +1,15 @@
 
 {{#if userInSession}}
-  <h2>Welcome, {{ userInSession.username }}!</h2>
   <div class="container d-flex flex-column align-items-center mt-5"> 
-    <div>
-      <a href="edit/user-profile"><img src="/images/defaultPic.png" alt="editar perfil" width="128px" height="128px" /></a>
+    <div class="w-100 text-center">
+      <a href="edit/user-profile"><img src="{{userInSession.profilePic}}" alt="editar perfil" width="256px" height="256px" /></a>
+      <h4 class="mt-2">Bienvenido, {{ userInSession.firstName }}!</h4>
     </div>
     {{#if myPets}}
     <a class="btn btn-primary mt-3" href="/pets">Mis mascotas</a>
     <a class="btn btn-primary mt-3" href="/appointments">Mis citas</a>
     {{else}}
-    <a class="btn btn-primary mt-3" href="/user-profile/addPet">Add a pet</a>
+    <a class="btn btn-primary mt-3" href="/addPet">Añade tu primera mascota</a>
     {{/if}}
     {{else}}
     <p>You are not logged in.</p>
