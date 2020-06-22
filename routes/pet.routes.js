@@ -1,4 +1,4 @@
-const { Router } = require("express");
+const { Router, request } = require("express");
 const mongoose = require("mongoose");
 const router = new Router();
 const User = require("../models/User.model");
@@ -6,18 +6,26 @@ const Pet = require("../models/Pet.model");
 const { db } = require("../models/User.model");
 const uploadPetPic = require('../configs/cloudinaryPet')
 
+
 router.get("/addPet", (req, res, next) => {
   res.render("user/createPet", { userInSession: req.session.currentUser });
 });
 
 
 router.post("/addPet", uploadPetPic.single('pic'), async (req, res, next) => {
-  const owner = req.session.currentUser._id;
-  const { name, animal, breed, birthdate, age } = req.body;
-  const pic = req.file.path;
-  console.log(animal);
-  const myPets = await Pet.find({ owner: owner });
   try {
+    const owner = req.session.currentUser._id;
+    const {
+      name,
+      animal,
+      breed,
+      birthdate,
+      age
+    } = req.body;
+    const pic = req.file ? req.file.path : undefined;
+    const myPets = await Pet.find({
+      owner: owner
+    });
     const petToInsert = new Pet({
       pic,
       name,
@@ -33,7 +41,7 @@ router.post("/addPet", uploadPetPic.single('pic'), async (req, res, next) => {
     res.redirect("/pets");
   } catch (error) {
     if (error instanceof mongoose.Error.ValidationError) {
-      res.status(500).render("user/createPets", {
+      res.status(1100).render("user/createPet", {
         errorMessage: `We couldn't add your pet. Please check that all fields are correct.`,
         userInSession: req.session.currentUser,
       });

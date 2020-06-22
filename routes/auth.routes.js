@@ -52,7 +52,7 @@ router.post("/signup", uploadProfilePic.single('profilepic'), (req, res, next) =
     .then(hashedPassword => {
       // Create the user in the db
       return User.create({
-        profilePic: req.file.path,
+        profilePic: req.file ? req.file.path : undefined,
         firstName: firstName,
         lastName: lastName,
         username: username,

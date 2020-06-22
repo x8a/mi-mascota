@@ -14,10 +14,9 @@ const storage = new CloudinaryStorage({
   params: {
     folder: 'mi-mascota/pet-pics',
     format: async (req, file) => 'png',
-    public_id: (req, file) => file.originalname
+    public_id: (req, file) => file.originalname,
+    async: true
   }
 });
 
-module.exports = multer({
-  storage: storage
-})
+module.exports = multer({storage: storage})
