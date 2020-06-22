@@ -23,9 +23,6 @@ router.post("/addPet", uploadPetPic.single('pic'), async (req, res, next) => {
       age
     } = req.body;
     const pic = req.file ? req.file.path : undefined;
-    const myPets = await Pet.find({
-      owner: owner
-    });
     const petToInsert = new Pet({
       pic,
       name,
@@ -36,8 +33,7 @@ router.post("/addPet", uploadPetPic.single('pic'), async (req, res, next) => {
       age,
     });
     const pet = await petToInsert.save();
-    myPets.push(pet);
-    const user = await User.findOneAndUpdate({ _id: owner }, { pets: myPets });
+    const user = await User.findOneAndUpdate({ _id: owner }, {$push: {pets: pet}});
     res.redirect("/pets");
   } catch (error) {
     if (error instanceof mongoose.Error.ValidationError) {
@@ -77,10 +73,8 @@ router.post("/delete/pet/:petId", async (req, res, next) => {
 try{
   const owner = req.session.currentUser._id;
   const {petId} = req.params;
-  const myPets = await Pet.find({owner});
-  const filterPets = myPets.filter((currPet) => currPet._id != petId);
-  const updateUserPets = await User.findOneAndUpdate({_id: owner}, {pets: filterPets});
   const deletedPet = await Pet.findByIdAndDelete(petId)
+  const updateUserPets = await User.findOneAndUpdate({_id: owner}, {$pull: {pets: deletedPet._id}});
   res.redirect("/pets");
 } catch (error) {
   next(error)

@@ -23,7 +23,7 @@
   <button type="submit" class="btn btn-success">Guardar cambios</button>
 </form>
 <a class="btn btn-danger" href="/pets">Cancelar</a>
-  <form action="/delete/pet/{{this._id}}" method="POST">
+  <form action="/delete/pet/{{pet._id}}" method="POST">
     <button type="submit" class=" btn btn-danger mt-3">Borrar mascota</button>
   </form>
 {{#if errorMessage}}
