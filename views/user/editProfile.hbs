@@ -1,26 +1,26 @@
-<h2>Edit Profile</h2>
+<h2>Editar perfil</h2>
 
 <div>
     <form class="form-group" action="/edit/user-profile" method="POST">
         <input type="hidden" name="_id" value="{{userInSession._id}}" />
-        <label for="firstName">Name</label>
+        <label for="firstName">Nombre</label>
         <br>
-        <input class="form-control" type="text" name="firstName" class="form-input" placeholder="Name" value="{{userInSession.firstName}}" />
+        <input class="form-control" type="text" name="firstName" class="form-input" placeholder="Nombre" value="{{userInSession.firstName}}" />
         <br>
-        <label for="lastName">Last name</label>
+        <label for="lastName">Apellido</label>
         <br>
-        <input class="form-control" type="text" name="lastName" class="form-input" placeholder="Last name" value="{{userInSession.lastName}}" />
+        <input class="form-control" type="text" name="lastName" class="form-input" placeholder="Apellido" value="{{userInSession.lastName}}" />
         <br>
-        <label for="username">Username</label>
+        <label for="username">Usuario</label>
         <br>
-        <input class="form-control" type="text" name="username" class="form-input" placeholder="Username" value="{{userInSession.username}}" />
+        <input class="form-control" type="text" name="username" class="form-input" placeholder="Usuario" value="{{userInSession.username}}" />
         <br>
         {{#if errorMessage}}
         <p class="error">{{errorMessage}}</p>
         {{/if}}
         <div class="d-flex justify-content-center">
-            <input type="submit" value="Save" class="btn btn-primary mr-2" />
-            <a href="/user-profile" class="btn btn-danger">Cancel</a>
+            <input type="submit" value="Guardar" class="btn btn-primary mr-2" />
+            <a href="/user-profile" class="btn btn-danger">Cancelar</a>
         </div>
         
     </form>
@@ -29,20 +29,20 @@
 <div class="mt-4">
     <h4 class="w-100 text-center">Cambia tu contraseña</h4>
     <form class="form-group mt-3" action="/edit/pwd" method="POST" >
-        <label for="oldPassword">Old password</label>
+        <label for="oldPassword">Contraseña antigua</label>
         <br>
-        <input class="form-control" type="password" name="oldPassword" id="oldPassword" class="w-75 form-input" placeholder="Enter your current password" />
+        <input class="form-control" type="password" name="oldPassword" id="oldPassword" class="w-75 form-input" placeholder="Contraseña antigua" />
         <br>
-        <label for="password">New password</label>
+        <label for="password">Nueva contraseña</label>
         <br>
-        <input class="form-control" type="password" name="newPassword" id="newPassword" class="form-input" size="80%" placeholder="Enter a new password" />
+        <input class="form-control" type="password" name="newPassword" id="newPassword" class="form-input" size="80%" placeholder="Nueva contraseña" />
         <br>
-        <label for="newPassword">Confirm new password</label>
+        <label for="newPassword">Repetir nueva contraseña</label>
         <br>
-        <input class="form-control" type="password" name="confirmPassword" id="confirmPassword" class="form-input" size="80%" placeholder="Confirm the new password"/>
+        <input class="form-control" type="password" name="confirmPassword" id="confirmPassword" class="form-input" size="80%" placeholder="Repite la nueva contraseña"/>
         <span id="checkMessage"></span>
         <br>
-        <input type="submit" value="Save" id="saveButton" class="btn btn-primary" disabled/>
+        <input type="submit" value="Guardar" id="saveButton" class="btn btn-primary" disabled/>
     </form>
 </div> 
 <script type="text/javascript" src="/javascripts/editUserProfile/checkConfirmPassword.js"></script>

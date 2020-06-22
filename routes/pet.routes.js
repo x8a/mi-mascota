@@ -42,7 +42,7 @@ router.post("/addPet", uploadPetPic.single('pic'), async (req, res, next) => {
   } catch (error) {
     if (error instanceof mongoose.Error.ValidationError) {
       res.status(1100).render("user/createPet", {
-        errorMessage: `We couldn't add your pet. Please check that all fields are correct.`,
+        errorMessage: `No se añadió la mascota. Asegúrate de que todos los campos están correctos.`,
         userInSession: req.session.currentUser,
       });
     } else {
@@ -51,22 +51,27 @@ router.post("/addPet", uploadPetPic.single('pic'), async (req, res, next) => {
   }
 });
 
-router.get("/pet-profile/:petId", async (req, res, next) => {
+router.get("/edit/pet-profile/:petId", async (req, res, next) => {
   try {
-    if(req.session.currentUser) {
-      const pet = await Pet.find({
-        _id: req.params.petId
-      });
-      res.render("pet/petDetails", {
-        pet: pet[0],
-        userInSession: req.session.currentUser
-      });
-    } 
-    res.status(403).render('pet/petDetails', {errorMessage: "Por favor, inicia sesión para acceder a esta página."})
+    const pet = await Pet.find({_id: req.params.petId});
+    res.render("pet/petDetails", {
+      pet: pet[0],
+      userInSession: req.session.currentUser
+    });
   } catch (error) {
     next(error);
   }
 });
+
+router.post("/edit/pet-profile/:petId", async (req, res, next) => {
+  try {
+    //const pet = await Pet.find({_id: req.params.petId});
+    const updatedPet = await Pet.findByIdAndUpdate(req.params.petId, req.body, {new: true});
+    res.redirect("/pets");
+  } catch (error) {
+    next(error);
+  }
+})
 
 router.post("/delete/pet/:petId", async (req, res, next) => {
 try{

@@ -1,11 +1,11 @@
 <div>
-  <h2 class="w-100 align-center">Login</h2>
+  <h2 class="w-100 align-center">Iniciar sesión</h2>
   <form class="form-group"  action="/login" method="POST">
-    <label for="username">Username: </label>
-    <input type="text" class="form-control" name="username" placeholder="Your username goes here"/>
-    <label for="password">Password: </label>
+    <label for="username">Usuario</label>
+    <input type="text" class="form-control" name="username" placeholder="Usuario"/>
+    <label for="password">Contraseña</label>
     <input type="password" class="form-control" name="password" placeholder="********"/>
-    <button class="btn btn-success mt-4" type="submit">Login</button>
+    <button class="btn btn-success mt-4" type="submit">Iniciar sesión</button>
   </form>
   {{#if errorMessage}}
   <p class="error">{{errorMessage}}</p>
