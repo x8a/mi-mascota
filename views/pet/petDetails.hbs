@@ -1,6 +1,6 @@
 <h2>Editar perfil de {{pet.name}}</h2>
 
-<form class="form-group" action="edit/pet-profile/{{this_id}}" method="POST" enctype="multipart/form-data">
+<form class="form-group" action="/edit/pet-profile/{{pet._id}}" method="POST" enctype="multipart/form-data">
   <label for="profilePicContainer">Foto</label>
   <div class="custom-file" id="profilePicContainer">
     <input type="file" class="custom-file-input" id="profilePic" name="pic" accept="image/png, image/jpeg">

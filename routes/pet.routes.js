@@ -63,9 +63,9 @@ router.get("/edit/pet-profile/:petId", async (req, res, next) => {
   }
 });
 
-router.post("/edit/pet-profile/:petId", async (req, res, next) => {
+router.post("/edit/pet-profile/:petId", uploadPetPic.single('pic'), async (req, res, next) => {
   try {
-    //const pet = await Pet.find({_id: req.params.petId});
+    console.log(req.body)
     const updatedPet = await Pet.findByIdAndUpdate(req.params.petId, req.body, {new: true});
     res.redirect("/pets");
   } catch (error) {
