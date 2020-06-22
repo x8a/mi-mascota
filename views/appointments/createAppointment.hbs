@@ -1,19 +1,20 @@
 <form class="form-group" action="/create/appointment" method="POST">
-  <label for="title">Titulo</label>
-  <input class="form-control" type="text" name="title" placeholder="Titulo"/>
-  <label for="pet">Mascota: </label>
+  <label for="title">Título</label>
+  <input class="form-control" type="text" name="title" placeholder="Título"/>
+  <label for="pet">Mascota</label>
   <select class="form-control" name="pet">
     {{#each myPets}}
       <option value="{{this._id}}">{{this.name}}</option>
     {{/each}}
   </select>
-  <label for="vet">Veterinarix: </label>
+  <label for="vet">Veterinarix</label>
   <input type="text" class="form-control" name="vet"/>
   <label for="date"></label>
   <input class="form-control" type="date" name="date"/>
   <label for="time"></label>
   <input class="form-control" type="time" name="time"/>
   <label for="comments"></label>
-  <textarea class="form-control" name="comments" rows="5" cols="33" placeholder="Si quieres, escribe un comentario"></textarea>
-  <button type="submit" class="btn btn-primary mt-3">Crear</button>
+  <textarea class="form-control" name="comments" rows="5" cols="33" placeholder="Si quieres, escribe un comentario."></textarea>
+  <button type="submit" class="btn btn-success mt-3">Crear cita</button>
 </form>
+<a class="btn btn-danger" href="/appointments">Cancelar</a>

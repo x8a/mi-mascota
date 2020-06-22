@@ -1,32 +1,32 @@
 <div id="signup">
   <h3>Crea tu cuenta</h3>
   <form class="form-group mt-4" action="/signup" method="POST" enctype="multipart/form-data">
-    <label for="profilePicContainer">Foto de perfil (opcional)</label>
+    <label for="profilePicContainer">Foto de perfil</label>
     <div class="custom-file" id="profilePicContainer">
       <input type="file" class="custom-file-input" id="profilePic" name="profilePic" accept="image/png, image/jpeg">
       <label class="custom-file-label form-control" for="profilePic" id="profilePicName">Elige un archivo</label>
     </div>
-    <label for="input-name">Name</label>
-    <input class="form-control" type="text" id="input-name" name="firstName" placeholder="Your name" />
+    <label for="input-name">Nombre</label>
+    <input class="form-control" type="text" id="input-name" name="firstName" placeholder="Nombre" />
 
-    <label for="input-last-name">Last name</label>
-    <input class="form-control" type="text" id="input-last-name" name="lastName" placeholder="Your last name" />
+    <label for="input-last-name">Apellido</label>
+    <input class="form-control" type="text" id="input-last-name" name="lastName" placeholder="Apellido" />
   
-    <label for="input-username">Username</label>
-    <input class="form-control" type="text" id="input-username" name="username" placeholder="Your username" />
+    <label for="input-username">Usuario</label>
+    <input class="form-control" type="text" id="input-username" name="username" placeholder="Usuario" />
 
     <label for="input-email">Email</label>
-    <input class="form-control" type="email" id="input-email" name="email" placeholder="Your email" />
+    <input class="form-control" type="email" id="input-email" name="email" placeholder="Email" />
 
-    <label for="input-password">Password</label>
+    <label for="input-password">Contraseña</label>
     <input class="form-control" type="password" id="newPassword" name="password" placeholder="********" />
 
-    <label for="confirm-password">Confirm password</label>
+    <label for="confirm-password">Repetir contraseña</label>
     <input class="form-control" type="password" id="confirmPassword" name="confirm-password" placeholder="********" />
     <span id="checkMessage"></span>
     <div class="mt-4">
-      <button class="btn btn-primary" type="submit" id="saveButton" disabled>Create account</button>
-      <a class="btn btn-danger" href="/">Cancel</a>
+      <button class="btn btn-primary" type="submit" id="saveButton" disabled>Crear cuenta</button>
+      <a class="btn btn-danger" href="/">Cancelar</a>
     </div>
     {{#if errorMessage}}
     <p class="error">{{errorMessage}}</p>

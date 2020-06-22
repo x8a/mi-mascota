@@ -9,23 +9,23 @@
     <ul class="navbar-nav mr-auto text-right">
       {{#if userInSession}}
       <li class="nav-item">
+        <a class="nav-link" href="/user-profile">Mi Perfil</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="/pets">Mis mascotas</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/appointments">Mis citas</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/addPet">Añadir mascota</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/logout">Logout</a>
+        <a class="nav-link" href="/logout">Cerrar sesión</a>
       </li>
       {{else}}
       <li class="nav-item">
-        <a class="nav-link" href="/signup">Sign Up</a>
+        <a class="nav-link" href="/signup">Crear cuenta</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/login">Login</a>
+        <a class="nav-link" href="/login">Iniciar sesión</a>
       </li>
       {{/if}}
     </ul>

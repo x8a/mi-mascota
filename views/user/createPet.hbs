@@ -1,28 +1,29 @@
 
 {{#if userInSession}}
-<h2>Add a pet page</h2>
+<h2>Añade tu mascota</h2>
 <form class="form-group" action="/addPet" method="POST" enctype="multipart/form-data">
-  <label for="profilePicContainer">Foto (opcional)</label>
+  <label for="profilePicContainer">Foto</label>
   <div class="custom-file" id="profilePicContainer">
     <input type="file" class="custom-file-input" id="profilePic" name="pic" accept="image/png, image/jpeg">
     <label class="custom-file-label form-control" for="profilePic" id="profilePicName">Elige un archivo</label>
   </div>
-  <label for="name">Name: </label>
+  <label for="name">Nombre</label>
   <input class="form-control" type="text" name="name" required/>
-  <label for="animal">Type: </label>
+  <label for="animal">Tipo</label>
   <select class="form-control" name="animal" required>
-    <option value="cat">Cat</option>
-    <option value="dog">Dog</option>
+    <option value="cat">Gato</option>
+    <option value="dog">Perro</option>
   </select>
-  <label for="breed">Breed: </label>
+  <label for="breed">Raza</label>
   <input class="form-control" type="text" name="breed" required/>
-  <label for="birthdate">Birth date:</label>
-  <input class="form-control" type="date" id="petBirth" name="birthdate" placeholder="It can be an approximate :)" required/> 
-  <label for="age">Age: </label> 
+  <label for="birthdate">Fecha de nacimiento</label>
+  <input class="form-control" type="date" id="petBirth" name="birthdate" placeholder="Puede ser aproximada" required/> 
+  <label for="age">Edad</label> 
   <input class="form-control" type="number" id="petAge" name="age" min="1" readonly required/>
-  <button type="submit" class="btn btn-success mt-3">Add pet</button>
-  <a class="btn btn-secondary mt-3" href="/user-profile">Back</a>
+  <button type="submit" class="btn btn-success mt-3">Añadir mascota</button>
+  
 </form>
+<a class="btn btn-danger" href="/pets">Cancelar</a>
 {{#if errorMessage}}
 <p>{{errorMessage}}</p>
 {{/if}}
