@@ -7,7 +7,7 @@ const app = require("../app");
 
 router.get("/appointments", async (req, res, next) => {
   try {
-    const appointments = await Pet.find({owner: req.session.currentUser._id}, {appointments: 1, name: 1,_id: 0}).populate("appointments");
+    const appointments = await Appointment.find({owner: req.session.currentUser._id}).populate("pet");
     console.log(`Appointments ---> ${Array.from(appointments)}`)
     res.render('appointments/allAppointments', {
       petAppointments: appointments,
@@ -17,6 +17,8 @@ router.get("/appointments", async (req, res, next) => {
     next(error)
   }
 })
+      //let myDate = app.date;
+      //app.date = `${myDate.getDate()}-${myDate.getMonth()}-${myDate.getFullYear()}`;
 
 router.get('/create/appointment', async (req, res, next) => {
   try {
@@ -35,7 +37,8 @@ router.get('/create/appointment', async (req, res, next) => {
 
 router.post('/create/appointment', async (req, res, next) => {
   console.table(req.body);
-  const {title, pet, vet, date, time,comments} = req.body
+  const owner = req.session.currentUser._id;
+  const {title, pet, vet, date, time, comments} = req.body
   const petAppointments = await Appointment.find({
     pet: pet
   });
@@ -43,9 +46,10 @@ router.post('/create/appointment', async (req, res, next) => {
     const newAppointment = new Appointment({
       title,
       pet,
+      owner,
       vet,
-      date: new Date (date),
-      time: time,
+      date,
+      time,
       comments
     });
     const appointment = await newAppointment.save()

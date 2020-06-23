@@ -24,7 +24,7 @@ const petSchema = new Schema ({
     trim: true,
   },
   birthdate: {
-    type: Date,
+    type: String,
     required: true,
   },
   age: {

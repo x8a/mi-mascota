@@ -16,7 +16,7 @@
   <label for="breed">Raza</label>
   <input class="form-control" type="text" name="breed" required value="{{pet.breed}}" />
   <label for="birthdate">Fecha de nacimiento</label>
-  <input class="form-control" type="date" id="petBirth" name="birthdate" placeholder="Puede ser aproximada" required />
+  <input class="form-control" type="date" id="petBirth" name="birthdate" placeholder="Puede ser aproximada" value="{{pet.birthdate}}" required />
   <label for="age">Edad</label>
   <input class="form-control" type="number" id="petAge" name="age" min="1" readonly required
     value="{{pet.age}}" />
@@ -29,3 +29,4 @@
 {{#if errorMessage}}
 <p>{{errorMessage}}</p>
 {{/if}}
+<script src="/javascripts/formsScripts/fileName.js"></script>

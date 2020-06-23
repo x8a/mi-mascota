@@ -1,16 +1,18 @@
 
 {{#if userInSession}}
 {{#each petAppointments}}
-<h3 class="card-text">{{this.name}}</h3>
-{{#each appointments}}
+<h3 class="card-text">{{this.title}}</h3>
 <div class="card">
   <div class="card-body">
-    <h4 class="card-title">{{this.title}}</h4>
-    <p class="card-text">{{petAppointments.name}}</p>
-    <p class="card-text">{{this.date}}, {{this.time}}</p>
+    <h4 class="card-title">{{this.pet.name}}</h4>
+    <p class="card-text">Veterinarix: {{this.vet}}</p>
+    <p class="card-text"><span id="date-view">{{this.date}}</span></p>
+    <p class="card-text">{{this.time}}</p>
   </div>
 </div>
-{{/each}}
+{{else}}
+<p>No tienes ninguna cita creada.</p>
 {{/each}}
 <a class="btn btn-secondary" href="/create/appointment">Añadir cita</a>
 {{/if}}
+<script src="/javascripts/createPet/script.js"></script>
