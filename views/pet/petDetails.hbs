@@ -1,32 +1,15 @@
-<h2>Editar perfil de {{pet.name}}</h2>
+<h1>Perfil pet</h1>
+<a class="btn btn-warning" href="edit/pet-profile/{{pet._id}}">Editar</a>
 
-<form class="form-group" action="/edit/pet-profile/{{pet._id}}" method="POST" enctype="multipart/form-data">
-  <label for="profilePicContainer">Foto</label>
-  <div class="custom-file" id="profilePicContainer">
-    <input type="file" class="custom-file-input" id="profilePic" name="pic" accept="image/png, image/jpeg">
-    <label class="custom-file-label form-control" for="profilePic" id="profilePicName">Elige un archivo</label>
+<div class="container">
+  <div class="petCard">
+    <div class="petCardImg">
+      <img src="{{pet.pic}}" alt="pet picture" width="258px" height="258px">
+    </div>
+    <div class="petCardDetails">
+      <p>{{pet.name}}</p>
+      <p>{{pet.age}} años</p>
+      <a class="btn btn-warning" href="edit/pet-profile/{{pet._id}}">Editar</a>
+    </div>
   </div>
-  <label for="name">Nombre</label>
-  <input class="form-control" type="text" name="name" value="{{pet.name}}" required />
-  <label for="animal">Tipo</label>
-  <select class="form-control" name="animal" required>
-    <option value="cat">Gato</option>
-    <option value="dog">Perro</option>
-  </select>
-  <label for="breed">Raza</label>
-  <input class="form-control" type="text" name="breed" required value="{{pet.breed}}" />
-  <label for="birthdate">Fecha de nacimiento</label>
-  <input class="form-control" type="date" id="petBirth" name="birthdate" placeholder="Puede ser aproximada" value="{{pet.birthdate}}" required />
-  <label for="age">Edad</label>
-  <input class="form-control" type="number" id="petAge" name="age" min="1" readonly required
-    value="{{pet.age}}" />
-  <button type="submit" class="btn btn-success">Guardar cambios</button>
-</form>
-<a class="btn btn-danger" href="/pets">Cancelar</a>
-  <form action="/delete/pet/{{pet._id}}" method="POST">
-    <button type="submit" class=" btn btn-danger mt-3">Borrar mascota</button>
-  </form>
-{{#if errorMessage}}
-<p>{{errorMessage}}</p>
-{{/if}}
-<script src="/javascripts/formsScripts/fileName.js"></script>
+</div>

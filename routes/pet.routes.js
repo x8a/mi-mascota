@@ -49,10 +49,22 @@ router.post("/addPet", uploadPetPic.single('profilePic'), async (req, res, next)
   }
 });
 
-router.get("/edit/pet-profile/:petId", async (req, res, next) => {
+router.get("/pet-profile/:petId"), async (req, res, next) => {
   try {
     const pet = await Pet.find({_id: req.params.petId});
     res.render("pet/petDetails", {
+      pet: pet[0],
+      userInSession: req.session.currentUser
+    });
+  } catch(error) {
+    next(error);
+  }
+} 
+
+router.get("/edit/pet-profile/:petId", async (req, res, next) => {
+  try {
+    const pet = await Pet.find({_id: req.params.petId});
+    res.render("pet/petEdit", {
       pet: pet[0],
       userInSession: req.session.currentUser
     });
@@ -66,6 +78,9 @@ router.post("/edit/pet-profile/:petId", uploadPetPic.single('pic'), async (req, 
     console.log(req.body)
     console.log(req.file)
     const updatedPet = await Pet.findByIdAndUpdate(req.params.petId, req.body, {new: true});
+    if(req.file) {
+      const myPet = await Pet.updateOne({ _id : req.params.petId }, { $set: { "pic" : req.file.path } })
+    }
     res.redirect("/pets");
   } catch (error) {
     next(error);
