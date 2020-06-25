@@ -3,14 +3,16 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const User = require("../models/User.model");
 const Pet = require("../models/Pet.model");
-
+const Appointment = require("../models/Appointment.model");
 
 router.get("/user-profile", async (req, res, next) => {
   try {
     const myPets = await Pet.find({ owner: req.session.currentUser._id });
+    const appointments = await Appointment.find({owner: req.session.currentUser._id}).populate("pet");
     res.render("user/profile", {
       userInSession: req.session.currentUser,
-      myPets: myPets
+      myPets: myPets,
+      petAppointments: appointments
     });
   } catch (e) {
     next(e);

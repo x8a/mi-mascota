@@ -17,8 +17,6 @@ router.get("/appointments", async (req, res, next) => {
     next(error)
   }
 })
-      //let myDate = app.date;
-      //app.date = `${myDate.getDate()}-${myDate.getMonth()}-${myDate.getFullYear()}`;
 
 router.get('/create/appointment', async (req, res, next) => {
   try {
