@@ -59,10 +59,32 @@ router.post('/create/appointment', async (req, res, next) => {
   }
 })
 
+router.get('/edit/appointment/:appoId', async (req, res, next) => {
+  const appointment = await Appointment.findById(req.params.appoId).populate('pet')
+  req.session.currentUser ? res.render('appointments/editAppointments', {
+    appointment,
+    userInSession: req.session.currentUser
+  }) : res.redirect('/login');
+})
+
+router.post('/edit/appointment/:appoId', async (req, res, next) => {
+  try {
+    const edAppo={
+      title: req.body.title,
+      vet: req.body.vet,
+      date: req.body.date,
+      time: req.body.time}
+    const appointment = await Appointment.findByIdAndUpdate(req.params.appoId, edAppo, {new: true})
+    res.redirect('/appointments')
+  } catch (error) {
+    next(error)
+  }
+  
+})
+
+
 router.get('/appointment/:appoId', async (req, res, next) => {
-  const appointment = await Appointment.findById(req.params.appoId)
-  console.log(req.params)
-  console.log(appointment)
+  const appointment = await Appointment.findById(req.params.appoId).populate('pet')
   req.session.currentUser ? res.render('appointments/appointment', {
     appointment,
     userInSession: req.session.currentUser
@@ -70,9 +92,7 @@ router.get('/appointment/:appoId', async (req, res, next) => {
   
 })
 
-router.post('edit/appointment/:appoId', async (req, res, next) => {
-  console.log(req.body)
-  //const {} = req.body
-})
+
+
 
 module.exports = router

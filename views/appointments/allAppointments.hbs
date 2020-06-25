@@ -1,11 +1,11 @@
 
 {{#if userInSession}}
 {{#each petAppointments}}
-<h3 class="card-text">{{this.title}}</h3>
 <a href="/appointment/{{this._id}}">
 <div class="card">
+  <h3 class="card-text">{{this.title}}</h3>
   <div class="card-body">
-    <h4 class="card-title">{{this.pet.name}}</h4>
+    <p class="card-title">{{this.pet.name}}</p>
     <p class="card-text">Veterinarix: {{this.vet}}</p>
     <p class="card-text"><span id="date-view">{{this.date}}</span></p>
     <p class="card-text">{{this.time}}</p>

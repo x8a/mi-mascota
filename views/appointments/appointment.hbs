@@ -1,6 +1,6 @@
 
-<div> 
-  <h1>{{appointment.title}}</h1>
+<div class="container"> 
+  <h3 class="text-center">{{appointment.title}}</h3>
   <div class="row">
     <div class="col">
       <p>Mascota: {{appointment.pet.name}}</p>
@@ -8,15 +8,22 @@
     </div>
     <div class="col">
       <p><i class="far fa-calendar-alt"></i><span> {{appointment.date}}</span></p>
-      <p><i class="far fa-clock"></i><span> {{appointment.time}}</span></p>
+      <p><i class="far fa-clock"></i><span> {{appointment.time}}hrs</span></p>
       <p></p>
     </div>
   </div>
   <div class="row">
     <div class="col">
-      <textarea class="w-100" readonly>
+     
+      <label class="text-center w-100" for="comments">Comentarios adicionales</label>
+      <textarea class="w-100" name="comments" readonly>
+        {{#if appointment.comments}}
           {{appointment.comments}}
-      </textarea>
+          {{else}}
+          No hay comentarios adicionales
+          {{/if}}
+      </textarea> 
+      <a class="btn btn-warning w-100" href="/edit/appointment/{{appointment._id}}">Editar</a>
     </div>
   </div>
 </div>
