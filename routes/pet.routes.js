@@ -48,10 +48,22 @@ router.post("/addPet", uploadPetPic.single('pic'), async (req, res, next) => {
   }
 });
 
-router.get("/edit/pet-profile/:petId", async (req, res, next) => {
+router.get("/pet-profile/:petId"), async (req, res, next) => {
   try {
     const pet = await Pet.find({_id: req.params.petId});
     res.render("pet/petDetails", {
+      pet: pet[0],
+      userInSession: req.session.currentUser
+    });
+  } catch(error) {
+    next(error);
+  }
+} 
+
+router.get("/edit/pet-profile/:petId", async (req, res, next) => {
+  try {
+    const pet = await Pet.find({_id: req.params.petId});
+    res.render("pet/petEdit", {
       pet: pet[0],
       userInSession: req.session.currentUser
     });

@@ -3,7 +3,7 @@
   {{#each myPets}}
   <div class="petCard">
     <div class="petCardImg">
-      <img src="{{this.pic}}" alt="pet picture" width="258px" height="258px">
+      <a href="pet-profile/{{this._id}}"><img src="{{this.pic}}" alt="pet picture" width="258px" height="258px"></a>
     </div>
     <div class="petCardDetails">
       <p>{{this.name}}</p>
