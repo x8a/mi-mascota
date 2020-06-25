@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const router = new Router();
 const User = require("../models/User.model");
 const Pet = require("../models/Pet.model");
+const Appointment = require("../models/Appointment.model");
 const { db } = require("../models/User.model");
 const uploadPetPic = require('../configs/cloudinaryPet')
 
@@ -74,8 +75,9 @@ router.post("/delete/pet/:petId", async (req, res, next) => {
 try{
   const owner = req.session.currentUser._id;
   const {petId} = req.params;
-  const deletedPet = await Pet.findByIdAndDelete(petId)
+  const deletedPet = await Pet.findByIdAndDelete(petId);
   const updateUserPets = await User.findOneAndUpdate({_id: owner}, {$pull: {pets: deletedPet._id}});
+  const updateAppointments = await Appointment.deleteMany({pet:  deletedPet._id});
   res.redirect("/pets");
 } catch (error) {
   next(error)
