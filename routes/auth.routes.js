@@ -20,7 +20,7 @@ router.get('/logout', (req, res, next) => {
   res.redirect('/')
 })
 
-router.post("/signup", uploadProfilePic.single('profilepic'), (req, res, next) => {
+router.post("/signup", uploadProfilePic.single('profilePic'), (req, res, next) => {
   const {
     firstName,
     lastName,
@@ -31,7 +31,7 @@ router.post("/signup", uploadProfilePic.single('profilepic'), (req, res, next) =
 
   if (!firstName || !lastName || !username || !email || !password) {
     res.render("auth/signup", {
-      errorMessage: "Name, Last name, Email, username, and password are mandatory.",
+      errorMessage: "Los siguientes campos son obligatorios: nombre, apellido, Email, usuario, y contraseña.",
     });
     return;
   }
@@ -40,7 +40,7 @@ router.post("/signup", uploadProfilePic.single('profilepic'), (req, res, next) =
   if (!regex.test(password)) {
     res.status(500).render("auth/signup", {
       errorMessage:
-        "The password must contain at least 6 characters, and include one number, one lowercase and one uppercase letter.",
+      "La contraseña debe tener 6 caracteres, e inlcuir un número, una letra minúscula y una letra mayúscula.",
     });
 
     return;
@@ -72,7 +72,7 @@ router.post("/signup", uploadProfilePic.single('profilepic'), (req, res, next) =
         });
       } else if (error.code === 11000) {
         res.status(500).render("auth/signup", {
-          errorMessage: "Username or email already exist.",
+          errorMessage: "El usuario o el email ya están registrados.",
         });
       } else {
         next(error);
@@ -84,7 +84,7 @@ router.post('/login', async (req, res, next) => {
   const {username,password} = req.body;
   if (!username || !password) {
     res.render('auth/login', {
-      errorMessage: 'Please enter both, email and password, to login'
+      errorMessage: 'Introduce email y contraseña para iniciar sesión.'
     })
     return;
   }
@@ -92,14 +92,14 @@ router.post('/login', async (req, res, next) => {
     user = await User.findOne({username})
     if(!user) {
       res.render('auth/login', {
-        errorMessage: "This user doesn't exist"
+        errorMessage: "Este usuario no existe."
       })
     } else if (bcrypt.compareSync(password, user.passwordHash)) {
     req.session.currentUser = user;
     res.redirect('/user-profile')
     } else {
     res.render('auth/login', {
-      errorMessage: 'Incorrect Password.'
+      errorMessage: 'Contraseña incorrecta.'
     });
   }
  } catch (err) {

@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const User = require("../models/User.model");
 const Pet = require("../models/Pet.model");
 const Appointment = require("../models/Appointment.model");
+const uploadUserPic = require('../configs/cloudinaryUser')
 
 router.get("/user-profile", async (req, res, next) => {
   try {
@@ -27,12 +28,16 @@ router.get("/edit/user-profile", (req, res, next) => {
   }
 })
 
-router.post("/edit/user-profile", async (req, res, next) => {
+router.post("/edit/user-profile", uploadUserPic.single('profilePic'), async (req, res, next) => {
   try{ 
     const {
       _id: userId
     } = req.session.currentUser
     const updatedUser = await User.findByIdAndUpdate(userId, req.body, {new: true});
+    console.log(req.file)
+    if(req.file) {
+      const updatedUser = await User.updateOne({ _id : userId }, { $set: { "profilePic" : req.file.path } })
+    }
     req.session.currentUser = updatedUser;
     res.redirect("/user-profile");
   } catch (e) {

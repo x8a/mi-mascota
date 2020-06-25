@@ -65,6 +65,9 @@ router.post("/edit/pet-profile/:petId", uploadPetPic.single('pic'), async (req, 
     console.log(req.body)
     console.log(req.file)
     const updatedPet = await Pet.findByIdAndUpdate(req.params.petId, req.body, {new: true});
+    if(req.file) {
+      const myPet = await Pet.updateOne({ _id : req.params.petId }, { $set: { "pic" : req.file.path } })
+    }
     res.redirect("/pets");
   } catch (error) {
     next(error);
