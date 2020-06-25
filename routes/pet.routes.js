@@ -13,7 +13,7 @@ router.get("/addPet", (req, res, next) => {
 });
 
 
-router.post("/addPet", uploadPetPic.single('pic'), async (req, res, next) => {
+router.post("/addPet", uploadPetPic.single('profilePic'), async (req, res, next) => {
   try {
     const owner = req.session.currentUser._id;
     const {
@@ -34,6 +34,7 @@ router.post("/addPet", uploadPetPic.single('pic'), async (req, res, next) => {
       age,
     });
     const pet = await petToInsert.save();
+    console.log(pet)
     const user = await User.findOneAndUpdate({ _id: owner }, {$push: {pets: pet}});
     res.redirect("/pets");
   } catch (error) {

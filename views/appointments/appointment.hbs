@@ -1,0 +1,22 @@
+
+<div> 
+  <h1>{{appointment.title}}</h1>
+  <div class="row">
+    <div class="col">
+      <p>Mascota: {{appointment.pet.name}}</p>
+      <p>Veterinarix: {{appointment.vet}}</p>
+    </div>
+    <div class="col">
+      <p><i class="far fa-calendar-alt"></i><span> {{appointment.date}}</span></p>
+      <p><i class="far fa-clock"></i><span> {{appointment.time}}</span></p>
+      <p></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <textarea class="w-100" readonly>
+          {{appointment.comments}}
+      </textarea>
+    </div>
+  </div>
+</div>

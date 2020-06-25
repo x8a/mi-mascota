@@ -20,7 +20,7 @@ router.get('/logout', (req, res, next) => {
   res.redirect('/')
 })
 
-router.post("/signup", uploadProfilePic.single('profilepic'), (req, res, next) => {
+router.post("/signup", uploadProfilePic.single('profilePic'), (req, res, next) => {
   const {
     firstName,
     lastName,

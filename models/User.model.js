@@ -37,6 +37,7 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Password is required."],
     },
+    googleId: String
   },
   {
     timestamps: {

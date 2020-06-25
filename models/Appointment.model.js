@@ -14,7 +14,7 @@ const appointmentSchema = new Schema ({
   pet: {type: Schema.Types.ObjectId, ref: 'Pet'},
   owner: {type: Schema.Types.ObjectId, ref: 'User'},
   date: {
-    type: Date,
+    type: String,
     required: true
   },
   time: {

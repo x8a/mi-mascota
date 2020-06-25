@@ -59,13 +59,20 @@ router.post('/create/appointment', async (req, res, next) => {
   }
 })
 
-router.get('/edit/appointment/:appoId', async (req, res, next) => {
-  const appointment = Appointment.findById(req.params)
-  res.render('appointments/editAppointment', appointment)
+router.get('/appointment/:appoId', async (req, res, next) => {
+  const appointment = await Appointment.findById(req.params.appoId)
+  console.log(req.params)
+  console.log(appointment)
+  req.session.currentUser ? res.render('appointments/appointment', {
+    appointment,
+    userInSession: req.session.currentUser
+  }) : res.redirect('/login');
+  
 })
 
 router.post('edit/appointment/:appoId', async (req, res, next) => {
-  
+  console.log(req.body)
+  //const {} = req.body
 })
 
 module.exports = router

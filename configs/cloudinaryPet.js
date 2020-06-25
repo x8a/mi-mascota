@@ -15,7 +15,6 @@ const storage = new CloudinaryStorage({
     folder: 'mi-mascota/pet-pics',
     format: async (req, file) => 'png',
     public_id: (req, file) => file.originalname,
-    async: true
   }
 });
 
