@@ -59,4 +59,13 @@ router.post('/create/appointment', async (req, res, next) => {
   }
 })
 
+router.get('/edit/appointment/:appoId', async (req, res, next) => {
+  const appointment = Appointment.findById(req.params)
+  res.render('appointments/editAppointment', appointment)
+})
+
+router.post('edit/appointment/:appoId', async (req, res, next) => {
+  
+})
+
 module.exports = router

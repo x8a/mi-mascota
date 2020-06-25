@@ -3,9 +3,7 @@ const router  = express.Router();
 
 /* GET home page */
 router.get('/', (req, res, next) => {
-  res.render('index', {
-    userInSession: req.session.currentUser,
-  });
+  req.session.currentUser ? res.redirect('/user-profile') : res.render('index', {userInSession: req.session.currentUser});
 });
 
 
