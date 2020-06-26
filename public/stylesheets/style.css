@@ -5,27 +5,53 @@ body {
   width: 30px;
 }
 
-div.petCard {
+div.customCard {
   font-size: 1.25rem;
-  padding: 10px;
-  border-top: 1px solid grey;
+  border: 1px solid grey;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px -8px rgba(0,0,0,0.4);
   height: 25%;
   width: 100%;
+  overflow: hidden;
   display: flex;
   justify-content: center;
 }
 
-div.petCard div.petCardImg {
+div.customCard div.customCardImg {
   height: 100%;
   width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-div.petCard div.petCardImg img {
+div.customCard div.customCardImg#appoImg {
+  background-color: steelblue;
+  height: auto;
+}
+
+div.customCard div.customCardImg img {
   height: 100%;
   width: 100%;
 }
 
-div.petCard div.petCardDetails {
-  text-align: center;
+div.customCard div.customCardImg img#calendar {
+  height: 96px;
+  width: 96px;
+}
+
+div.customCard div.customCardDetails {
+  text-align: left;
+  padding: 10px;
   width: 60%;
+}
+
+div.customCard div.customCardDetails span {
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.noTextDecorUni > * {
+text-decoration: none;
+color: black;
 }

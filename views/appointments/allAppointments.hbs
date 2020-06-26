@@ -1,20 +1,34 @@
 
 {{#if userInSession}}
-{{#each petAppointments}}
-<a href="/appointment/{{this._id}}">
-<div class="card">
-  <h3 class="card-text">{{this.title}}</h3>
-  <div class="card-body">
-    <p class="card-title">{{this.pet.name}}</p>
-    <p class="card-text">Veterinarix: {{this.vet}}</p>
-    <p class="card-text"><span id="date-view">{{this.date}}</span></p>
-    <p class="card-text">{{this.time}}</p>
-  </div>
+<div class="container">
+  <h2 class="mt-4 mb-4 text-center">Mis citas</h2>
+  {{#each petAppointments}}
+    <a href="/appointment/{{this._id}}" class="noTextDecorUni">
+      <div class="customCard mb-3">
+        <div class="customCardImg" id="appoImg">
+          <img id="calendar" src="/images/calendar2.svg" alt="calendar"/>
+        </div>
+        <div class="customCardDetails">
+          <h4 class="card-text text-center">{{this.title}}</h4>
+          <p class="card-title">Mascota: <span>{{this.pet.name}}</span></p>
+          <p class="card-text">Veterinarix: <span>{{this.vet}}</span></p>
+          <div class="row">
+            <div class="col">
+              <p class="card-text"><i class="far fa-calendar-alt"></i> <span id="date-view"> {{this.date}}</span></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <p class="card-text"><i class="far fa-clock"></i> <span> {{this.time}}</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+  {{else}}
+    <p>No tienes ninguna cita creada.</p>
+  {{/each}}
+  <a class="btn btn-secondary" href="/create/appointment">Añadir cita</a>
+  {{/if}}
 </div>
-</a>
-{{else}}
-<p>No tienes ninguna cita creada.</p>
-{{/each}}
-<a class="btn btn-secondary" href="/create/appointment">Añadir cita</a>
-{{/if}}
 <script src="/javascripts/createPet/script.js"></script>

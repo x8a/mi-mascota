@@ -1,19 +1,22 @@
-<h2>Mis mascotas</h2>
+<h2 class="mt-4 mb-4 text-center">Mis mascotas</h2>
 <div class="container">
   {{#each myPets}}
-  <div class="petCard">
-    <div class="petCardImg">
+  <div class="customCard mb-3">
+    <div class="customCardImg">
       <a href="pet-profile/{{this._id}}"><img src="{{this.pic}}" alt="pet picture" width="258px" height="258px"></a>
     </div>
-    <div class="petCardDetails">
-      <p>{{this.name}}</p>
-      <p>{{this.age}} años</p>
+    <div class="customCardDetails">
+      <p><span class="font-weight-bold">Nombre:</span> {{this.name}}</p>
+      <p><span class="font-weight-bold">Edad:</span> {{this.age}} años</p>
       <a class="btn btn-warning" href="edit/pet-profile/{{this._id}}">Editar</a>
     </div>
   </div>
   {{/each}}
 </div>
-<a class="btn btn-secondary" href="/addPet">Añadir mascota</a>
+<div class="text-center">
+  <a class="btn btn-secondary" href="/addPet">Añadir mascota</a>
+</div>
+
 
  
 

@@ -3,33 +3,26 @@
   <div class="w-100 text-center">
     <a href="edit/user-profile"><img src="{{userInSession.profilePic}}" alt="editar perfil" width="256px"
         height="256px" /></a>
-    <h4 class="mt-2">{{ userInSession.username }}</h4>
+    <h4 class="mt-2">Hola {{ userInSession.username }}!</h4>
   </div>
   {{#if myPets}}
-  <a class="btn btn-primary mt-3" href="/pets">Mis mascotas</a>
-  <a class="btn btn-primary mt-3" href="/appointments">Mis citas</a>
+  <a class="btn btn-primary mt-3 w-75" href="/pets">Mis mascotas</a>
   {{else}}
-  <a class="btn btn-primary mt-3" href="/addPet">Añade tu primera mascota</a>
+  <div class="w-75 text-center mt-5">
+    <p>Aún no tienes mascotas</p>
+    <a class="btn btn-primary w-100 rounded" href="/addPet">Añade tu primera mascota</a>
+  </div>
   {{/if}}
   {{#if petAppointments}}
-  <h5 class="card-text">Próximas citas</h5>
-  {{#each petAppointments}}
-  <div class="card">
-    <div class="card-body">
-      <h6 class="card-title">{{this.title}} con {{this.pet.name}}</h6>
-      <p class="card-text"><span id="date-view">{{this.date}}</span></p>
-    </div>
-  </div>
+  <a class="btn btn-primary mt-3 w-75" href="/appointments">Mis citas</a>
   {{else}}
-  <p>No tienes ninguna cita creada.</p>
-  {{/each}}
+  <div class="w-75 text-center mt-3">
+    <p>No tienes ninguna cita creada.</p>
+    <a class="btn btn-secondary w-100 rounded" href="/create/appointment">Añadir cita</a>
+  </div>
   {{/if}}
   {{else}}
   <p>No has iniciado sesión.</p>
   {{/if}}
 </div>
 <script src="/javascripts/createPet/script.js"></script>
-
-<!--<div>
-    <a href="edit/user-profile"><img id="edit-icon" src="../../images/edit-icon.png">Editar perfil</a>
-  </div>-->
