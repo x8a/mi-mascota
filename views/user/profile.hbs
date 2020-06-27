@@ -15,17 +15,6 @@
   </div>
   {{/if}}
   {{#if petAppointments}}
-<<<<<<< HEAD
-  
-  <h4 class="card-text mt-3">Próximas citas</h4>
-  {{#each petAppointments}}
-  <div class="card">
-    <div class="card-body">
-      <h6 class="card-title">{{this.title}} con {{this.pet.name}}</h6>
-      <p class="card-text"><span id="date-view">{{this.date}}</span></p>
-    </div>
-  {{/each}}
-=======
   <div class="text-center mt-2">
     <a class="btn btn-primary" href="/appointments">Mis citas</a>
   </div>
@@ -35,7 +24,6 @@
     <h6 class="card-title">{{this.title}} con {{this.pet.name}}</h6>
     <p class="card-text"><span id="date-view"><i class="far fa-calendar-alt"></i>{{this.date}}</span></p>
   </div>
->>>>>>> Fixed pet profile route
   {{else}}
   <div class="w-75 text-center mt-3">
     <p>No tienes ninguna cita creada.</p>
