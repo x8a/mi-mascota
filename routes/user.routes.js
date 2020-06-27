@@ -9,17 +9,9 @@ const uploadUserPic = require('../configs/cloudinaryUser')
 router.get("/user-profile", async (req, res, next) => {
   try {
     if(req.session.currentUser){
-      const myPets = await Pet.find({
-        owner: req.session.currentUser._id
-      });
-      const appointments = await Appointment.find({
-        owner: req.session.currentUser._id
-      }).populate("pet");
-      res.render("user/profile", {
-        userInSession: req.session.currentUser,
-        myPets: myPets,
-        petAppointments: appointments
-      });
+      const myPets = await Pet.find({owner: req.session.currentUser._id});
+      const appointments = await Appointment.find({owner: req.session.currentUser._id}).populate("pet");
+      res.render("user/profile", {userInSession: req.session.currentUser, myPets: myPets, petAppointments: appointments});
     } else {
       res.redirect('/login')
     } 

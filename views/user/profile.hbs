@@ -14,24 +14,21 @@
   </div>
   {{/if}}
   {{#if petAppointments}}
-  <a class="btn btn-primary mt-3 w-75" href="/appointments">Mis citas</a>
-  <h4 class="card-text">Próximas citas</h4>
+  
+  <h4 class="card-text mt-3">Próximas citas</h4>
   {{#each petAppointments}}
   <div class="card">
     <div class="card-body">
       <h6 class="card-title">{{this.title}} con {{this.pet.name}}</h6>
       <p class="card-text"><span id="date-view">{{this.date}}</span></p>
     </div>
+  {{/each}}
   {{else}}
   <div class="w-75 text-center mt-3">
     <p>No tienes ninguna cita creada.</p>
     <a class="btn btn-secondary w-100 rounded" href="/create/appointment">Añadir cita</a>
   </div>
-  {{/each}}
   {{/if}}
-
-
-
   {{else}}
   <p>No has iniciado sesión.</p>
   {{/if}}

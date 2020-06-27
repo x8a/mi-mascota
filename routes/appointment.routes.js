@@ -68,17 +68,26 @@ router.get('/edit/appointment/:appoId', async (req, res, next) => {
 })
 
 router.post('/edit/appointment/:appoId', async (req, res, next) => {
-  try {
-    const edAppo={
-      title: req.body.title,
-      vet: req.body.vet,
-      date: req.body.date,
-      time: req.body.time}
-    const appointment = await Appointment.findByIdAndUpdate(req.params.appoId, edAppo, {new: true})
-    res.redirect('/appointments')
-  } catch (error) {
-    next(error)
+  if(req.session.currentUser) {
+    try {
+      const edAppo = {
+        title: req.body.title,
+        vet: req.body.vet,
+        date: req.body.date,
+        time: req.body.time,
+        comments: req.body.comments
+      }
+      const appointment = await Appointment.findByIdAndUpdate(req.params.appoId, edAppo, {
+        new: true
+      })
+      res.redirect('/appointments')
+    } catch (error) {
+      next(error)
+    }
+  } else {
+    res.redirect('/login')
   }
+  
   
 })
 
