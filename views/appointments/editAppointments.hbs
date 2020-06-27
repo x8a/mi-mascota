@@ -18,7 +18,14 @@
       </div>
     </div>
     <label for="comments" class="mt-3">Comentarios adicionales</label>
-    <textarea class="w-100" name="comments">{{appointment.comments}}</textarea>
-    <button class="btn btn-success mt-3" type="submit">Aceptar</button>
+    <textarea class="w-100 mt-2" name="comments">{{appointment.comments}}</textarea>
+    <div class="d-flex mt-3">
+      <button class="btn btn-secondary w-50 mr-1"><a href="/appointment/{{appointment._id}}"
+          class="text-decoration-none text-white">Atras</a></button><button class="btn btn-success w-50"
+        type="submit">Aceptar</button>
+    </div>
+  </form>
+  <form class="form-group" action="/delete/appointment/{{appointment._id}}" method="POST">
+    <button type="submit" class="btn btn-danger w-100 mt-4">Borrar cita</button>
   </form>
 </div>

@@ -22,8 +22,11 @@
           {{else}}
           No hay comentarios adicionales
           {{/if}}
-      </textarea> 
-      <a class="btn btn-warning w-100" href="/edit/appointment/{{appointment._id}}">Editar</a>
+      </textarea>
+      <div class="d-flex mt-3">
+        <a class="btn btn-secondary w-50 mr-1" href="/appointments">Atras</a>
+        <a class="btn btn-warning w-50" href="/edit/appointment/{{appointment._id}}">Editar</a>
+      </div>
     </div>
   </div>
 </div>

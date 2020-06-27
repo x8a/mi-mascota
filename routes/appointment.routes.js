@@ -4,11 +4,11 @@ const User = require("../models/User.model");
 const Pet = require("../models/Pet.model");
 const Appointment = require("../models/Appointment.model");
 const app = require("../app");
+const { route } = require("./index.routes");
 
 router.get("/appointments", async (req, res, next) => {
   try {
     const appointments = await Appointment.find({owner: req.session.currentUser._id}).populate("pet");
-    console.log(`Appointments ---> ${Array.from(appointments)}`)
     res.render('appointments/allAppointments', {
       petAppointments: appointments,
       userInSession: req.session.currentUser
@@ -82,6 +82,17 @@ router.post('/edit/appointment/:appoId', async (req, res, next) => {
   
 })
 
+router.post('/delete/appointment/:appoId', async (req, res, next) => {
+  try {
+    const {appoId} = req.params
+    const deletedAppo = await Appointment.findByIdAndDelete(appoId)
+    updatedPet = await Pet.findOneAndUpdate({_id: deletedAppo.pet}, {$pull: {appointments: deletedAppo._id}})
+    res.redirect('/appointments');
+  } catch (error) {
+    next(error)
+  }
+})
+
 
 router.get('/appointment/:appoId', async (req, res, next) => {
   const appointment = await Appointment.findById(req.params.appoId).populate('pet')
@@ -89,10 +100,7 @@ router.get('/appointment/:appoId', async (req, res, next) => {
     appointment,
     userInSession: req.session.currentUser
   }) : res.redirect('/login');
-  
 })
-
-
 
 
 module.exports = router
