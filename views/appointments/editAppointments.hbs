@@ -1,6 +1,6 @@
 <div class="container">
   <h3 class="text-center">Edita la cita</h3>
-  <form class="form-group" action="/edit/appointment/{{appointment._id}}" method="POST">
+  <form class="form-group  mx-4" action="/edit/appointment/{{appointment._id}}" method="POST">
     <label for="title" class="mt-3">Titulo</label>
     <input class="form-control" type="text" value="{{appointment.title}}" name="title"/>
     <label for="pet" class="mt-3">Mascota</label>
@@ -21,10 +21,10 @@
     <textarea class="w-100 mt-2" name="comments">{{appointment.comments}}</textarea>
     <div class="d-flex mt-3">
       <button class="btn btn-secondary w-50 mr-1"><a href="/appointment/{{appointment._id}}" class="text-decoration-none text-white">Cancelar</a></button>
-      <button class="btn btn-success w-50"type="submit">Aceptar</button>
+      <button class="btn btn-success w-50"type="submit">Guardar</button>
     </div>
   </form>
-  <form class="form-group" action="/delete/appointment/{{appointment._id}}" method="POST">
+  <form class="form-group  mx-4" action="/delete/appointment/{{appointment._id}}" method="POST">
     <button type="submit" class="btn btn-danger w-100 mt-4">Borrar cita</button>
   </form>
 </div>

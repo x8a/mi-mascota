@@ -9,9 +9,11 @@
       <p><span class="font-weight-bold">Fecha de nacimiento:</span> <span id="date-view">{{pet.birthdate}}</span></p>
       <p><span class="font-weight-bold">Edad:</span> {{pet.age}} años</p>
     </div>
-    <div class="text-center">
-      <a class="btn btn-warning" id="pet-edit" href="/edit/pet-profile/{{pet._id}}">Editar</a>
-    </div>
+      <div class="d-flex mt-3 mx-4">
+        <a class="btn btn-secondary w-50 mr-1" href="/pets">Mis mascotas</a>
+        <a class="btn btn-warning w-50" id="pet-edit" href="/edit/pet-profile/{{pet._id}}">Editar</a>
+      </div>
   </div>
 </div>
 <script src="/javascripts/createPet/script.js"></script>
+
