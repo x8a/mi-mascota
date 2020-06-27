@@ -18,12 +18,16 @@
   <div class="text-center mt-2">
     <a class="btn btn-primary" href="/appointments">Mis citas</a>
   </div>
-  <h4 class="mt-3 text-center">Próximas citas</h4>
+  <h4 class="mt-4 text-center">Próximas citas</h4>
   {{#each petAppointments}}
-  <div class="card border rounded mt-3 text-center w-50" id="profile-appointments">
-    <h6 class="card-title">{{this.title}} con {{this.pet.name}}</h6>
-    <p class="card-text"><span id="date-view"><i class="far fa-calendar-alt"></i>{{this.date}}</span></p>
+  <div class="card border rounded py-3 mt-1 text-center w-50" id="profile-appointments">
+    <a href="/appointment/{{this._id}}" class="noTextDecorUni">
+      <div >
+        <h6 class="card-title">{{this.title}} con {{this.pet.name}}</h6>
+        <p class="card-text"><i class="far fa-calendar-alt"></i> <span id="date-view">{{this.date}}</span></p>
+      </div>
   </div>
+  {{/each}}
   {{else}}
   <div class="w-75 text-center mt-3">
     <p>No tienes ninguna cita creada.</p>
