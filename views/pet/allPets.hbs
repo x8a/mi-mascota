@@ -1,15 +1,17 @@
 <h2 class="mt-4 mb-4 text-center">Mis mascotas</h2>
 <div class="container">
   {{#each myPets}}
+  <a href="pet-profile/{{this._id}}" class="noTextDecorUni">
   <div class="customCard mb-3">
     <div class="customCardImg">
-      <a href="pet-profile/{{this._id}}"><img src="{{this.pic}}" alt="pet picture"></a>
+      <img src="{{this.pic}}" alt="pet picture">
     </div>
     <div class="customCardDetails">
       <p><span class="font-weight-bold">Nombre:</span> {{this.name}}</p>
       <p><span class="font-weight-bold">Edad:</span> {{this.age}} años</p>
     </div>
   </div>
+  </a>
   {{/each}}
 </div>
 <div class="text-center">
