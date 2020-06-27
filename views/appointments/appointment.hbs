@@ -1,7 +1,7 @@
 
 <div class="container"> 
   <h3 class="text-center">{{appointment.title}}</h3>
-  <div class="row mt-5">
+  <div class="row mt-5 mx-4">
     <div class="col">
       <p><span class="font-weight-bold">Mascota: </span>{{appointment.pet.name}}</p>
       <p><span class="font-weight-bold">Vet: </span>{{appointment.vet}}</p>
@@ -22,8 +22,8 @@
           No hay comentarios adicionales
           {{/if}}
       </textarea>
-      <div class="d-flex mt-3">
-        <a class="btn btn-secondary w-50 mr-1" href="/appointments">Atras</a>
+      <div class="d-flex mt-3 mx-4">
+        <a class="btn btn-secondary w-50 mr-1" href="/appointments">Mis citas</a>
         <a class="btn btn-warning w-50" href="/edit/appointment/{{appointment._id}}">Editar</a>
       </div>
     </div>

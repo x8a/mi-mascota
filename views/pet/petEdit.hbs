@@ -1,6 +1,6 @@
 <h2 class="text-center">Editar {{pet.name}}</h2>
 
-<form class="form-group mx-5" action="/edit/pet-profile/{{pet._id}}" method="POST" enctype="multipart/form-data">
+<form class="form-group mx-4" action="/edit/pet-profile/{{pet._id}}" method="POST" enctype="multipart/form-data">
   <label for="profilePicContainer">Foto</label>
   <div class="custom-file" id="profilePicContainer">
     <input type="file" class="custom-file-input" id="profilePic" name="pic" accept="image/png, image/jpeg">
@@ -20,18 +20,19 @@
     value="{{pet.birthdate}}" required />
   <label for="age">Edad</label>
   <input class="form-control" type="number" id="petAge" name="age" min="1" readonly required value="{{pet.age}}" />
-  <div class="text-center mt-3">
-    <button type="submit" class="btn btn-success">Guardar cambios</button>
-  </div>
+    <div class="d-flex mt-3">
+      <button class="btn btn-secondary w-50 mr-1"><a href="/pet-profile/{{pet._id}}" class="text-decoration-none text-white">Cancelar</a></button>
+      <button class="btn btn-success w-50"type="submit">Guardar</button>
+    </div>
 </form>
-<div class="text-center">
-  <a class="btn btn-danger" href="/pets">Cancelar</a>
-</div>
-<form class="text-center" action="/delete/pet/{{pet._id}}" method="POST">
-  <button type="submit" class=" btn btn-danger mt-3">Borrar mascota</button>
+
+<form class="form-group mx-4" action="/delete/pet/{{pet._id}}" method="POST">
+  <button type="submit" class="btn btn-danger w-100 mt-4">Borrar mascota</button>
 </form>
 {{#if errorMessage}}
 <p>{{errorMessage}}</p>
 {{/if}}
 <script src="/javascripts/createPet/petAge.js"></script>
 <script src="/javascripts/formsScripts/fileName.js"></script>
+
+
