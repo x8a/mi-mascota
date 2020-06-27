@@ -7,22 +7,22 @@ const app = require("../app");
 const { route } = require("./index.routes");
 
 router.get("/appointments", async (req, res, next) => {
-  try {
-    const appointments = await Appointment.find({owner: req.session.currentUser._id}).populate("pet");
-    res.render('appointments/allAppointments', {
-      petAppointments: appointments,
-      userInSession: req.session.currentUser
-    })
-  } catch(error) {
-    next(error)
+  if(req.session.currentUser) {
+    try {
+      const appointments = await Appointment.find({owner: req.session.currentUser._id}).sort({date: 1}).populate("pet");
+      res.render('appointments/allAppointments', {petAppointments: appointments,userInSession: req.session.currentUser})
+    } catch (error) {
+      next(error)
+    }
+  } else {
+    res.redirect('login')
   }
+  
 })
 
 router.get('/create/appointment', async (req, res, next) => {
   try {
-    const myPets = await Pet.find({
-      owner: req.session.currentUser._id
-    });
+    const myPets = await Pet.find({owner: req.session.currentUser._id});
     res.render('appointments/createAppointment', {
       myPets,
       userInSession: req.session.currentUser

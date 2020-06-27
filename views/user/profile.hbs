@@ -6,8 +6,8 @@
     <h4 class="mt-2">Hola, {{ userInSession.username }}!</h4>
   </div>
   {{#if myPets}}
-    <div class="text-center mt-3">
-      <a class="btn btn-primary" href="/pets">Mis mascotas</a>
+    <div class="text-center mt-3 w-100">
+      <a class="btn btn-primary w-50" href="/pets">Mis mascotas</a>
     </div>
   {{else}}
   <div class="w-75 text-center mt-5">
@@ -15,12 +15,12 @@
   </div>
   {{/if}}
   {{#if petAppointments}}
-  <div class="text-center mt-2">
-    <a class="btn btn-primary" href="/appointments">Mis citas</a>
+  <div class="text-center mt-2 w-100">
+    <a class="btn btn-primary w-50" href="/appointments">Mis citas</a>
   </div>
   <h4 class="mt-4 text-center">Próximas citas</h4>
   {{#each petAppointments}}
-  <div class="card border rounded py-3 mt-1 text-center w-50" id="profile-appointments">
+  <div class="card border rounded py-3 mt-1 text-center w-75" id="profile-appointments">
     <a href="/appointment/{{this._id}}" class="noTextDecorUni">
       <div >
         <h6 class="card-title">{{this.title}} con {{this.pet.name}}</h6>
