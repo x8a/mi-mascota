@@ -1,19 +1,21 @@
 {{#if userInSession}}
 <div class="container d-flex flex-column align-items-center mt-5">
   <div class="w-100 text-center">
-    <a href="edit/user-profile"><img src="{{userInSession.profilePic}}" alt="editar perfil" width="256px"
+    <a href="edit/user-profile"><img class="rounded-circle" src="{{userInSession.profilePic}}" id="shadow" alt="editar perfil" width="256px"
         height="256px" /></a>
-    <h4 class="mt-2">Hola {{ userInSession.username }}!</h4>
+    <h4 class="mt-2">Hola, {{ userInSession.username }}!</h4>
   </div>
   {{#if myPets}}
-  <a class="btn btn-primary mt-3 w-75" href="/pets">Mis mascotas</a>
+    <div class="text-center mt-3">
+      <a class="btn btn-primary" href="/pets">Mis mascotas</a>
+    </div>
   {{else}}
   <div class="w-75 text-center mt-5">
-    <p>Aún no tienes mascotas</p>
-    <a class="btn btn-primary w-100 rounded" href="/addPet">Añade tu primera mascota</a>
+      <a class="btn btn-primary w-100 rounded" href="/addPet">Añade tu primera mascota</a>
   </div>
   {{/if}}
   {{#if petAppointments}}
+<<<<<<< HEAD
   
   <h4 class="card-text mt-3">Próximas citas</h4>
   {{#each petAppointments}}
@@ -23,6 +25,17 @@
       <p class="card-text"><span id="date-view">{{this.date}}</span></p>
     </div>
   {{/each}}
+=======
+  <div class="text-center mt-2">
+    <a class="btn btn-primary" href="/appointments">Mis citas</a>
+  </div>
+  <h4 class="mt-3 text-center">Próximas citas</h4>
+  {{#each petAppointments}}
+  <div class="card border rounded mt-3 text-center w-50" id="profile-appointments">
+    <h6 class="card-title">{{this.title}} con {{this.pet.name}}</h6>
+    <p class="card-text"><span id="date-view"><i class="far fa-calendar-alt"></i>{{this.date}}</span></p>
+  </div>
+>>>>>>> Fixed pet profile route
   {{else}}
   <div class="w-75 text-center mt-3">
     <p>No tienes ninguna cita creada.</p>

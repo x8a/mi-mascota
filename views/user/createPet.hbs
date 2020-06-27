@@ -1,7 +1,7 @@
 
 {{#if userInSession}}
 <h2>Añade tu mascota</h2>
-<form class="form-group" action="/addPet" method="POST" enctype="multipart/form-data">
+<form class="form-group mx-5" action="/addPet" method="POST" enctype="multipart/form-data">
   <label for="profilePicContainer">Foto</label>
   <div class="custom-file" id="profilePicContainer">
     <input type="file" class="custom-file-input" id="profilePic" name="profilePic" accept="image/png, image/jpeg">
@@ -11,8 +11,8 @@
   <input class="form-control" type="text" name="name" required/>
   <label for="animal">Tipo</label>
   <select class="form-control" name="animal" required>
-    <option value="cat">Gato</option>
-    <option value="dog">Perro</option>
+    <option value="Gato">Gato</option>
+    <option value="Perro">Perro</option>
   </select>
   <label for="breed">Raza</label>
   <input class="form-control" type="text" name="breed" required/>
@@ -20,9 +20,13 @@
   <input class="form-control" type="date" id="petBirth" name="birthdate" placeholder="Puede ser aproximada" required/> 
   <label for="age">Edad</label> 
   <input class="form-control" type="number" id="petAge" name="age" min="1" readonly required/>
-  <button type="submit" class="btn btn-success mt-3">Añadir mascota</button> 
+  <div class="text-center">
+    <button type="submit" class="btn btn-success mt-3">Añadir mascota</button>
+  </div>
 </form>
-<a class="btn btn-danger" href="/pets">Cancelar</a>
+<div class="text-center">
+  <a class="btn btn-danger" href="/pets">Cancelar</a>
+</div>
 {{#if errorMessage}}
 <p>{{errorMessage}}</p>
 {{/if}}

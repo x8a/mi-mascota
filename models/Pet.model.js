@@ -14,7 +14,7 @@ const petSchema = new Schema ({
   owner: {type: Schema.Types.ObjectId, ref: 'User'},
   animal: {
     type: String,
-    enum: ['cat', 'dog'],
+    enum: ['Gato', 'Perro'],
     trim: true,
     required: true
   },

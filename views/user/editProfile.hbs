@@ -1,7 +1,7 @@
-<h2>Editar perfil</h2>
+<h2 class="text-center">Editar perfil</h2>
 
 <div>
-    <form class="form-group" action="/edit/user-profile" method="POST" enctype="multipart/form-data">
+    <form class="form-group mx-5" action="/edit/user-profile" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="_id" value="{{userInSession._id}}" />
         <label for="profilePicContainer">Foto</label>
         <div class="custom-file" id="profilePicContainer">
@@ -34,7 +34,7 @@
     </form>
 </div>
 
-<div class="mt-4">
+<div class="mt-4 mx-5">
     <h4 class="w-100 text-center">Cambia tu contraseña</h4>
     <form class="form-group mt-3" action="/edit/pwd" method="POST">
         <label for="oldPassword">Contraseña antigua</label>

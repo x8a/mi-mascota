@@ -1,8 +1,18 @@
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; 
+
+}
 
 #edit-icon {
   width: 30px;
+}
+
+#shadow {
+  box-shadow: 10px 10px 12px grey;
+}
+
+#profile-appointments {
+  background-color: #EAEDED;
 }
 
 div.customCard {
@@ -15,6 +25,16 @@ div.customCard {
   overflow: hidden;
   display: flex;
   justify-content: center;
+
+}
+
+.petCardImg {
+  display: flex;
+  justify-content: center;
+}
+
+.petCardDetails {
+  padding: 20px;
 }
 
 div.customCard div.customCardImg {
@@ -31,8 +51,9 @@ div.customCard div.customCardImg#appoImg {
 }
 
 div.customCard div.customCardImg img {
-  height: 100%;
-  width: 100%;
+  object-fit: cover;
+  width: 150px; 
+  height: 150px;
 }
 
 div.customCard div.customCardImg img#calendar {
@@ -44,6 +65,7 @@ div.customCard div.customCardDetails {
   text-align: left;
   padding: 10px;
   width: 60%;
+  background-color: #EAEDED;
 }
 
 div.customCard div.customCardDetails span {

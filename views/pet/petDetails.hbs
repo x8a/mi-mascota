@@ -1,15 +1,17 @@
-<h1>Perfil pet</h1>
-<a class="btn btn-warning" href="edit/pet-profile/{{pet._id}}">Editar</a>
-
 <div class="container">
   <div class="petCard">
     <div class="petCardImg">
-      <img src="{{pet.pic}}" alt="pet picture" width="258px" height="258px">
+      <img class="rounded-circle" id="shadow" src="{{pet.pic}}" alt="pet picture" width="258px" height="258px">
     </div>
     <div class="petCardDetails">
-      <p>{{pet.name}}</p>
-      <p>{{pet.age}} años</p>
-      <a class="btn btn-warning" href="edit/pet-profile/{{pet._id}}">Editar</a>
+      <p><span class="font-weight-bold">Nombre:</span> {{pet.name}}</p>
+      <p class="font-weight-bold">{{pet.animal}} {{pet.breed}}</p>
+      <p><span class="font-weight-bold">Fecha de nacimiento:</span> <span id="date-view">{{pet.birthdate}}</span></p>
+      <p><span class="font-weight-bold">Edad:</span> {{pet.age}} años</p>
+    </div>
+    <div class="text-center">
+      <a class="btn btn-warning" id="pet-edit" href="/edit/pet-profile/{{pet._id}}">Editar</a>
     </div>
   </div>
 </div>
+<script src="/javascripts/createPet/script.js"></script>

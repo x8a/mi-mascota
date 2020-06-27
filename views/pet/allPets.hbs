@@ -3,12 +3,11 @@
   {{#each myPets}}
   <div class="customCard mb-3">
     <div class="customCardImg">
-      <a href="pet-profile/{{this._id}}"><img src="{{this.pic}}" alt="pet picture" width="258px" height="258px"></a>
+      <a href="pet-profile/{{this._id}}"><img src="{{this.pic}}" alt="pet picture"></a>
     </div>
     <div class="customCardDetails">
       <p><span class="font-weight-bold">Nombre:</span> {{this.name}}</p>
       <p><span class="font-weight-bold">Edad:</span> {{this.age}} años</p>
-      <a class="btn btn-warning" href="edit/pet-profile/{{this._id}}">Editar</a>
     </div>
   </div>
   {{/each}}
