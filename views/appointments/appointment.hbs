@@ -1,5 +1,4 @@
-
-<div class="container"> 
+<div class="container">
   <h3 class="text-center">{{appointment.title}}</h3>
   <div class="row mt-5 mx-4">
     <div class="col">
@@ -12,6 +11,15 @@
       <p></p>
     </div>
   </div>
+  <div id="pac-container">
+    <input id="pac-input" type="text" placeholder="Busca a tu vet">
+  </div>
+  <div id="map"></div>
+  <div id="infowindow-content">
+    <img src="" width="16" height="16" id="place-icon">
+    <span id="place-name" class="title"></span><br>
+    <span id="place-address"></span>
+  </div>
   <div class="row mt-3">
     <div class="col">
       <label class="text-center font-weight-bold w-100" for="comments">Comentarios adicionales</label>
@@ -22,10 +30,13 @@
           No hay comentarios adicionales
           {{/if}}
       </textarea>
-      <div class="d-flex mt-3 mx-4">
-        <a class="btn btn-secondary w-50 mr-1" href="/appointments">Mis citas</a>
-        <a class="btn btn-warning w-50" href="/edit/appointment/{{appointment._id}}">Editar</a>
-      </div>
     </div>
   </div>
+  <div class="d-flex mt-3 mx-4">
+    <a class="btn btn-secondary w-50 mr-1" href="/appointments">Mis citas</a>
+    <a class="btn btn-warning w-50" href="/edit/appointment/{{appointment._id}}">Editar</a>
+  </div>
 </div>
+<script
+  src="https://maps.googleapis.com/maps/api/js?key={{googleKey}}&libraries=places"></script>
+<script type="text/javascript" src="/javascripts/map/map.js"></script>

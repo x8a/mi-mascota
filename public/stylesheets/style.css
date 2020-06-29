@@ -72,6 +72,19 @@ div.customCard div.customCardDetails span {
   font-size: 0.95rem;
 }
 
+#map {
+  height: 300px;
+  width: 100%;
+}
+
+#pac-input {
+  background-color: #fff;
+  font-size: 15px;
+  font-weight: 300;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
 .noTextDecorUni > * {
 text-decoration: none;
 color: black;

@@ -42,7 +42,8 @@ hbs.registerPartials(path.join(__dirname, "/views/partials"));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.png')));
 
-
+//register helper
+hbs.registerHelper("googleKey", () => process.env.GOOGLE_MAPS_KEY)
 
 // default value for title local
 app.locals.title = 'Mi Mascota';
