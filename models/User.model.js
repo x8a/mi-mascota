@@ -32,12 +32,12 @@ const userSchema = new Schema(
       lowercase: true,
       trim: true,
     },
+    googleID: String,
     // add password property here
     passwordHash: {
       type: String,
       required: [true, "Password is required."],
     },
-    googleId: String
   },
   {
     timestamps: {

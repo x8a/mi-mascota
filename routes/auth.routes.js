@@ -5,7 +5,8 @@ const router = new Router();
 const User = require("../models/User.model");
 const Pet = require("../models/Pet.model");
 const Appointment = require("../models/Appointment.model");
-const uploadProfilePic = require('../configs/cloudinaryUser')
+const uploadProfilePic = require('../configs/cloudinaryUser');
+const passport = require("passport");
 
 const saltRounds = 10;
 
@@ -14,6 +15,18 @@ router.get("/signup", (req, res) => res.render("auth/signup"));
 router.get('/login', (req, res, next) => {
   res.render('auth/login')
 });
+
+router.get('/auth/google', passport.authenticate('google', {
+  scope: ["https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email"
+]
+}));
+
+router.get("/auth/google/callback", passport.authenticate("google", {
+  successRedirect: "/user-profile",
+  failureRedirect: "/login" // hacia dónde debe ir si falla?
+}));
+
 
 router.get('/logout', (req, res, next) => {
   req.session.destroy();

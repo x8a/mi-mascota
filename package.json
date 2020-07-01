@@ -11,6 +11,7 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "cloudinary": "^1.22.0",
+    "connect-ensure-login": "^0.1.1",
     "connect-mongo": "^3.2.0",
     "cookie-parser": "^1.4.3",
     "dotenv": "^6.0.0",
@@ -23,6 +24,7 @@
     "multer-storage-cloudinary": "^4.0.0",
     "node-sass-middleware": "^0.11.0",
     "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0",
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {

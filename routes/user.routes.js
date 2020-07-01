@@ -5,8 +5,9 @@ const User = require("../models/User.model");
 const Pet = require("../models/Pet.model");
 const Appointment = require("../models/Appointment.model");
 const uploadUserPic = require('../configs/cloudinaryUser')
+const ensureLogin = require('connect-ensure-login')
 
-router.get("/user-profile", async (req, res, next) => {
+router.get("/user-profile",ensureLogin.ensureLoggedIn(), async (req, res, next) => {
   try {
     if(req.session.currentUser){
       const myPets = await Pet.find({owner: req.session.currentUser._id});
