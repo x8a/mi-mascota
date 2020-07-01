@@ -4,19 +4,20 @@
     <div class="col">
       <p><span class="font-weight-bold">Mascota: </span>{{appointment.pet.name}}</p>
       <p><span class="font-weight-bold">Vet: </span>{{appointment.vet}}</p>
+      
     </div>
     <div class="col">
-      <p><i class="far fa-calendar-alt"></i><span> {{appointment.date}}</span></p>
+      <p><i class="far fa-calendar-alt"></i> <span id="date-view"> {{appointment.date}}</span></p>
       <p><i class="far fa-clock"></i><span> {{appointment.time}}hrs</span></p>
-      <p></p>
     </div>
   </div>
-  <div id="pac-container">
-    <input id="pac-input" type="text" placeholder="Busca a tu vet">
+  <div  class="row mx-4">
+    <div class="col">
+      <p><span class="font-weight-bold">Centro: </span><span id="vet-title">{{appointment.vetOfficeName}}</span></p>
+    </div>
   </div>
   <div id="map"></div>
   <div id="infowindow-content">
-    <img src="" width="16" height="16" id="place-icon">
     <span id="place-name" class="title"></span><br>
     <span id="place-address"></span>
   </div>
@@ -37,6 +38,10 @@
     <a class="btn btn-warning w-50" href="/edit/appointment/{{appointment._id}}">Editar</a>
   </div>
 </div>
+<p hidden id="appointment-lat">{{appointment.lat}}</p>
+<p hidden id="appointment-lng">{{appointment.lng}}</p>
+<p hidden id="complete-address">{{appointment.center}}</p>
+<script src="/javascripts/createPet/script.js"></script> 
 <script
   src="https://maps.googleapis.com/maps/api/js?key={{googleKey}}&libraries=places"></script>
-<script type="text/javascript" src="/javascripts/map/map.js"></script>
+<script type="text/javascript" src="/javascripts/map/mapView.js"></script>

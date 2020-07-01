@@ -11,6 +11,18 @@ const appointmentSchema = new Schema ({
     trim: true,
     required: true
   },
+  center:  {
+    type: String
+  },
+  vetOfficeName:  {
+    type: String
+  },
+  lat: {
+    type: Number
+  },
+  lng: {
+    type: Number
+  },
   pet: {type: Schema.Types.ObjectId, ref: 'Pet'},
   owner: {type: Schema.Types.ObjectId, ref: 'User'},
   date: {
