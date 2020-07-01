@@ -17,15 +17,18 @@ router.get('/login', (req, res, next) => {
 });
 
 router.get('/auth/google', passport.authenticate('google', {
-  scope: ["https://www.googleapis.com/auth/userinfo.profile",
-      "https://www.googleapis.com/auth/userinfo.email"
-]
+  scope: ["https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email"]
 }));
 
-router.get("/auth/google/callback", passport.authenticate("google", {
-  successRedirect: "/user-profile",
-  failureRedirect: "/login" // hacia dónde debe ir si falla?
-}));
+router.get("/auth/google/callback", 
+passport.authenticate("google", {failureRedirect: "/login"}), 
+  (req, res) => {
+    console.log(`LOGIN SUCCESSFUL, req.user -----> ${req.user}`)
+    console.log(`LOGIN SUCCESSFUL, req.session -----> ${req.session.user}`)
+    req.session.currentUser = req.user;
+    res.redirect('/')
+  }
+);
 
 
 router.get('/logout', (req, res, next) => {
