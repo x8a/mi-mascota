@@ -36,7 +36,7 @@ router.get('/create/appointment', async (req, res, next) => {
 router.post('/create/appointment', async (req, res, next) => {
   console.table(req.body);
   const owner = req.session.currentUser._id;
-  const {title, pet, vet, date, time, comments} = req.body
+  const {title, pet, vet, center, vetOfficeName, lat, lng, date, time, comments} = req.body
   const petAppointments = await Appointment.find({
     pet: pet
   });
@@ -46,6 +46,10 @@ router.post('/create/appointment', async (req, res, next) => {
       pet,
       owner,
       vet,
+      center,
+      lat,
+      lng,
+      vetOfficeName,
       date,
       time,
       comments

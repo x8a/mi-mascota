@@ -1,5 +1,3 @@
-//https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_KEY}&libraries=places
-
 function startMap() {
   const bcn = {
     lat: 41.38879,
@@ -12,10 +10,7 @@ function startMap() {
     disableDefaultUI: true,
     fullscreenControl: true
   });
-  let card = document.getElementById('pac-card');
   let input = document.getElementById('pac-input');
-
-  map.controls[google.maps.ControlPosition.TOP_RIGHT].push(card);
 
   let autocomplete = new google.maps.places.Autocomplete(input);
 
@@ -26,7 +21,8 @@ function startMap() {
 
   // Set the data fields to return when the user selects a place.
   autocomplete.setFields(
-      ['address_components', 'geometry', 'icon', 'name']);
+      ['address_components', 'geometry', 'name']
+      );
 
   let infowindow = new google.maps.InfoWindow();
   let infowindowContent = document.getElementById('infowindow-content');
@@ -36,7 +32,7 @@ function startMap() {
     anchorPoint: new google.maps.Point(0, -29)
   });
 
-  autocomplete.addListener('place_changed', function() {
+  autocomplete.addListener('place_changed', () => {
     infowindow.close();
     marker.setVisible(false);
     let place = autocomplete.getPlace();
@@ -60,16 +56,21 @@ function startMap() {
     let address = '';
     if (place.address_components) {
       address = [
-        (place.address_components[0] && place.address_components[0].short_name || ''),
         (place.address_components[1] && place.address_components[1].short_name || ''),
+        (place.address_components[0] && place.address_components[0].short_name || ''),
         (place.address_components[2] && place.address_components[2].short_name || '')
       ].join(' ');
     }
 
-    infowindowContent.children['place-icon'].src = place.icon;
     infowindowContent.children['place-name'].textContent = place.name;
     infowindowContent.children['place-address'].textContent = address;
     infowindow.open(map, marker);
+
+    document.getElementById('complete-name').value = place.name;
+    console.log("Address: " + address)
+    document.getElementById('complete-address').value = address;
+    document.getElementById('lat').value = place.geometry.location.lat();
+    document.getElementById('lng').value = place.geometry.location.lng();
   });
 
 }
