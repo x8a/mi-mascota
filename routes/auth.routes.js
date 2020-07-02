@@ -17,7 +17,6 @@ router.get('/login', (req, res, next) => {
 });
 
 router.post('/login', async (req, res, next) => {
-  console.log(`ESTAMOS EN EL LOGIN`)
   const {
     username,
     password
@@ -39,7 +38,6 @@ router.post('/login', async (req, res, next) => {
     } else if (bcrypt.compareSync(password, user.passwordHash)) {
       console.log(`LOGIN EXITOSO!!`)
       req.session.currentUser = user;
-      console.log(`EL CURRENT USER ----> ${req.session.currentUser}`)
       res.redirect('/user-profile')
     } else {
       res.render('auth/login', {
@@ -58,8 +56,6 @@ router.get('/auth/google', passport.authenticate('google', {
 router.get("/auth/google/callback", 
 passport.authenticate("google", {failureRedirect: "/login"}), 
   (req, res) => {
-    console.log(`LOGIN SUCCESSFUL, req.user -----> ${req.user}`)
-    console.log(`LOGIN SUCCESSFUL, req.session -----> ${req.session.user}`)
     req.session.currentUser = req.user;
     res.redirect('/')
   }
