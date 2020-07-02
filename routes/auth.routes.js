@@ -36,7 +36,6 @@ router.post('/login', async (req, res, next) => {
         errorMessage: "Este usuario no existe."
       })
     } else if (bcrypt.compareSync(password, user.passwordHash)) {
-      console.log(`LOGIN EXITOSO!!`)
       req.session.currentUser = user;
       res.redirect('/user-profile')
     } else {
@@ -108,7 +107,6 @@ router.post("/signup", uploadProfilePic.single('profilePic'), (req, res, next) =
       }); 
     })
     .then(user => {
-      console.log(`User created: ${user}`);
       req.session.currentUser = user;
       res.redirect("/user-profile");
     })
