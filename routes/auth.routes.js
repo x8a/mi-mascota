@@ -16,6 +16,41 @@ router.get('/login', (req, res, next) => {
   res.render('auth/login')
 });
 
+router.post('/login', async (req, res, next) => {
+  console.log(`ESTAMOS EN EL LOGIN`)
+  const {
+    username,
+    password
+  } = req.body;
+  if (!username || !password) {
+    res.render('auth/login', {
+      errorMessage: 'Introduce email y contraseña para iniciar sesión.'
+    })
+    return;
+  }
+  try {
+    user = await User.findOne({
+      username
+    })
+    if (!user) {
+      res.render('auth/login', {
+        errorMessage: "Este usuario no existe."
+      })
+    } else if (bcrypt.compareSync(password, user.passwordHash)) {
+      console.log(`LOGIN EXITOSO!!`)
+      req.session.currentUser = user;
+      console.log(`EL CURRENT USER ----> ${req.session.currentUser}`)
+      res.redirect('/user-profile')
+    } else {
+      res.render('auth/login', {
+        errorMessage: 'Contraseña incorrecta.'
+      });
+    }
+  } catch (err) {
+    next(err)
+  }
+})
+
 router.get('/auth/google', passport.authenticate('google', {
   scope: ["https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email"]
 }));
@@ -96,31 +131,6 @@ router.post("/signup", uploadProfilePic.single('profilePic'), (req, res, next) =
     });
 });
 
-router.post('/login', async (req, res, next) => {
-  const {username,password} = req.body;
-  if (!username || !password) {
-    res.render('auth/login', {
-      errorMessage: 'Introduce email y contraseña para iniciar sesión.'
-    })
-    return;
-  }
-  try {
-    user = await User.findOne({username})
-    if(!user) {
-      res.render('auth/login', {
-        errorMessage: "Este usuario no existe."
-      })
-    } else if (bcrypt.compareSync(password, user.passwordHash)) {
-    req.session.currentUser = user;
-    res.redirect('/user-profile')
-    } else {
-    res.render('auth/login', {
-      errorMessage: 'Contraseña incorrecta.'
-    });
-  }
- } catch (err) {
-   next(err)
- } 
-})
+
 
 module.exports = router;
