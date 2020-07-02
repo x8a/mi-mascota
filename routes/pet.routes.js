@@ -29,7 +29,6 @@ router.post(
         age,
       });
       const pet = await petToInsert.save();
-      console.log(pet);
       const user = await User.findOneAndUpdate(
         { _id: owner },
         { $push: { pets: pet } }
@@ -77,8 +76,6 @@ router.post(
   uploadPetPic.single("pic"),
   async (req, res, next) => {
     try {
-      console.log(req.body);
-      console.log(req.file);
       const updatedPet = await Pet.findByIdAndUpdate(
         req.params.petId,
         req.body,

@@ -67,7 +67,6 @@ function startMap() {
     infowindow.open(map, marker);
 
     document.getElementById('complete-name').value = place.name;
-    console.log("Address: " + address)
     document.getElementById('complete-address').value = address;
     document.getElementById('lat').value = place.geometry.location.lat();
     document.getElementById('lng').value = place.geometry.location.lng();

@@ -50,7 +50,6 @@ passport.use(
       callbackURL: "/auth/google/callback"
     },
     async (accessToken, refreshToken, profile, done) => {
-      console.log("Google account details:", profile);
       User.findOne({
           googleID: profile.id
         }).then(user => {
