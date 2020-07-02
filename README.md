@@ -1,10 +1,11 @@
-# Mi Mascota App
+# Mi Mascota
 
-# Developers: 
+## Developers
 Santi Casa - Alba Olveros
 
-# Link to App: 
+## Links to App 
 [Production](https://mimascota.herokuapp.com)
+
 [Dev](https://staging-mimascota.herokuapp.com)
 
 ## Description
