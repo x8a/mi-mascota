@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="petCard">
+    <div class="petCardImg">
+      <img class="rounded-circle" id="shadow" src="{{pet.pic}}" alt="pet picture" width="258px" height="258px">
+    </div>
+    <div class="petCardDetails">
+      <p><span class="font-weight-bold">Nombre:</span> {{pet.name}}</p>
+      <p class="font-weight-bold">{{pet.animal}} {{pet.breed}}</p>
+      <p><span class="font-weight-bold">Fecha de nacimiento:</span> <span id="date-view">{{pet.birthdate}}</span></p>
+      <p><span class="font-weight-bold">Edad:</span> {{pet.age}} años</p>
+    </div>
+      <div class="d-flex mt-3 mx-4">
+        <a class="btn btn-secondary w-50 mr-1" href="/pets">Mis mascotas</a>
+        <a class="btn btn-warning w-50" id="pet-edit" href="/edit/pet-profile/{{pet._id}}">Editar</a>
+      </div>
+  </div>
+</div>
+<script src="/javascripts/createPet/script.js"></script>
+

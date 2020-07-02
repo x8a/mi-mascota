@@ -1,0 +1,60 @@
+<h2 class="text-center">Editar perfil</h2>
+
+<div>
+    <form class="form-group mx-5" action="/edit/user-profile" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="_id" value="{{userInSession._id}}" />
+        <label for="profilePicContainer">Foto</label>
+        <div class="custom-file" id="profilePicContainer">
+            <input type="file" class="custom-file-input" id="profilePic" name="profilePic" accept="image/png, image/jpeg">
+            <label class="custom-file-label form-control" for="profilePic" id="profilePicName">Elige un archivo</label>
+        </div>
+        <label for="firstName">Nombre</label>
+        <br>
+        <input class="form-control" type="text" name="firstName" class="form-input" placeholder="Nombre"
+            value="{{userInSession.firstName}}" />
+        <br>
+        <label for="lastName">Apellido</label>
+        <br>
+        <input class="form-control" type="text" name="lastName" class="form-input" placeholder="Apellido"
+            value="{{userInSession.lastName}}" />
+        <br>
+        <label for="username">Usuario</label>
+        <br>
+        <input class="form-control" type="text" name="username" class="form-input" placeholder="Usuario"
+            value="{{userInSession.username}}" />
+        <br>
+        {{#if errorMessage}}
+        <p class="error">{{errorMessage}}</p>
+        {{/if}}
+        <div class="d-flex justify-content-center">
+            <input type="submit" value="Guardar" class="btn btn-primary mr-2" />
+            <a href="/user-profile" class="btn btn-danger">Cancelar</a>
+        </div>
+
+    </form>
+</div>
+
+<div class="mt-4 mx-5">
+    <h4 class="w-100 text-center">Cambia tu contraseña</h4>
+    <form class="form-group mt-3" action="/edit/pwd" method="POST">
+        <label for="oldPassword">Contraseña antigua</label>
+        <br>
+        <input class="form-control" type="password" name="oldPassword" id="oldPassword" class="w-75 form-input"
+            placeholder="Contraseña antigua" />
+        <br>
+        <label for="password">Nueva contraseña</label>
+        <br>
+        <input class="form-control" type="password" name="newPassword" id="newPassword" class="form-input" size="80%"
+            placeholder="Nueva contraseña" />
+        <br>
+        <label for="newPassword">Repetir nueva contraseña</label>
+        <br>
+        <input class="form-control" type="password" name="confirmPassword" id="confirmPassword" class="form-input"
+            size="80%" placeholder="Repite la nueva contraseña" />
+        <span id="checkMessage"></span>
+        <br>
+        <input type="submit" value="Guardar" id="saveButton" class="btn btn-primary" disabled />
+    </form>
+</div>
+<script type="text/javascript" src="/javascripts/editUserProfile/checkConfirmPassword.js"></script>
+<script src="/javascripts/formsScripts/fileName.js"></script>

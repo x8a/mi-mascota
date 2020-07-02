@@ -1,0 +1,91 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; 
+}
+
+#edit-icon {
+  width: 30px;
+}
+
+#shadow {
+  box-shadow: 10px 10px 12px grey;
+}
+
+#profile-appointments {
+  background-color: #EAEDED;
+}
+
+div.customCard {
+  font-size: 1.25rem;
+  border: 1px solid grey;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px -8px rgba(0,0,0,0.4);
+  height: 25%;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+
+}
+
+.petCardImg {
+  display: flex;
+  justify-content: center;
+}
+
+.petCardDetails {
+  padding: 20px;
+}
+
+div.customCard div.customCardImg {
+  height: 100%;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.customCard div.customCardImg#appoImg {
+  background-color: steelblue;
+  height: auto;
+}
+
+div.customCard div.customCardImg img {
+  object-fit: cover;
+  width: 150px; 
+  height: 150px;
+}
+
+div.customCard div.customCardImg img#calendar {
+  height: 96px;
+  width: 96px;
+}
+
+div.customCard div.customCardDetails {
+  text-align: left;
+  padding: 10px;
+  width: 60%;
+  background-color: #EAEDED;
+}
+
+div.customCard div.customCardDetails span {
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+#map {
+  height: 300px;
+  width: 100%;
+}
+
+#pac-input {
+  background-color: #fff;
+  font-size: 15px;
+  font-weight: 300;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.noTextDecorUni > * {
+text-decoration: none;
+color: black;
+}

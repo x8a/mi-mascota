@@ -1,0 +1,37 @@
+<div id="signup">
+  <h3 class="text-center">Crea tu cuenta</h3>
+  <form class="form-group mt-4 mx-5" action="/signup" method="POST" enctype="multipart/form-data">
+    <label for="profilePicContainer">Foto de perfil</label>
+    <div class="custom-file" id="profilePicContainer">
+      <input type="file" class="custom-file-input" id="profilePic" name="profilePic" accept="image/png, image/jpeg">
+      <label class="custom-file-label form-control" for="profilePic" id="profilePicName">Elige un archivo</label>
+    </div>
+    <label for="input-name">Nombre</label>
+    <input class="form-control" type="text" id="input-name" name="firstName" placeholder="Nombre" />
+
+    <label for="input-last-name">Apellido</label>
+    <input class="form-control" type="text" id="input-last-name" name="lastName" placeholder="Apellido" />
+  
+    <label for="input-username">Usuario</label>
+    <input class="form-control" type="text" id="input-username" name="username" placeholder="Usuario" />
+
+    <label for="input-email">Email</label>
+    <input class="form-control" type="email" id="input-email" name="email" placeholder="Email" />
+
+    <label for="input-password">Contraseña</label>
+    <input class="form-control" type="password" id="newPassword" name="password" placeholder="********" />
+
+    <label for="confirm-password">Repetir contraseña</label>
+    <input class="form-control" type="password" id="confirmPassword" name="confirm-password" placeholder="********" />
+    <span id="checkMessage"></span>
+    <div class="mt-4 text-center">
+      <button class="btn btn-primary" type="submit" id="saveButton" disabled>Crear cuenta</button>
+    </div>
+    {{#if errorMessage}}
+    <p class="error">{{errorMessage}}</p>
+    {{/if}}
+
+  </form>
+</div>
+<script src="/javascripts/editUserProfile/checkConfirmPassword.js"></script>
+<script src="/javascripts/formsScripts/fileName.js"></script>

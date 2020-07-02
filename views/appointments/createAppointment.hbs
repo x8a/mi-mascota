@@ -1,0 +1,37 @@
+<form class="form-group mx-4" action="/create/appointment" method="POST">
+  <label for="title">Título</label>
+  <input class="form-control" type="text" name="title" placeholder="Título"/>
+  <label for="pet">Mascota</label>
+  <select class="form-control" name="pet">
+    {{#each myPets}}
+      <option value="{{this._id}}">{{this.name}}</option>
+    {{/each}}
+  </select>
+  <label for="vet">Veterinarix</label>
+  <input type="text" class="form-control" name="vet"/>
+  <label>Clínica</label>
+  <input type="text" class="form-control" id="pac-input" placeholder="Busca tu clínica"/>
+  <input hidden id="complete-name" name="vetOfficeName"></input>
+  <input hidden id="complete-address" name="center"></input>
+  <input hidden id="lat" name="lat"></input>
+  <input hidden id="lng" name="lng"></input>
+  <div id="map"></div>
+  <div id="infowindow-content">
+    <span id="place-name" class="title"></span><br>
+    <span id="place-address"></span>
+  </div>
+  <label for="date"></label>
+  <input class="form-control" type="date" name="date"/>
+  <label for="time"></label>
+  <input class="form-control" type="time" name="time"/>
+  <label for="comments"></label>
+  <textarea class="form-control" name="comments" rows="5" cols="33" placeholder="Si quieres, escribe un comentario."></textarea>
+    <div class="d-flex mt-3">
+    <button class="btn btn-secondary w-50 mr-1"><a href="/appointments"
+        class="text-decoration-none text-white">Cancelar</a></button>
+    <button class="btn btn-success w-50" type="submit">Añadir cita</button>
+  </div>
+</form>
+<script
+  src="https://maps.googleapis.com/maps/api/js?key={{googleKey}}&libraries=places"></script>
+<script type="text/javascript" src="/javascripts/map/map.js"></script>

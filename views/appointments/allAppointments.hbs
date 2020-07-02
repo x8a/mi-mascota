@@ -1,0 +1,37 @@
+
+{{#if userInSession}}
+<div class="container">
+  <h2 class="mt-4 mb-4 text-center">Mis citas</h2>
+  {{#each petAppointments}}
+    <a href="/appointment/{{this._id}}" class="noTextDecorUni">
+      <div class="customCard mb-3">
+        <div class="customCardImg" id="appoImg">
+          <img id="calendar" src="/images/calendar2.svg" alt="calendar"/>
+        </div>
+        <div class="customCardDetails">
+          <h4 class="card-text text-center">{{this.title}}</h4>
+          <p class="card-title">Mascota: <span>{{this.pet.name}}</span></p>
+          <p class="card-text">Clínica: <span>{{this.vetOfficeName}}</span></p>
+          <div class="row">
+            <div class="col">
+              <p class="card-text"><i class="far fa-calendar-alt"></i> <span id="date-view"> {{this.date}}</span></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <p class="card-text"><i class="far fa-clock"></i> <span> {{this.time}}</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+  {{else}}
+    <p class="text-center">No tienes ninguna cita creada.</p>
+  {{/each}}
+  <div class="text-center">
+  <a class="btn btn-info" href="/create/appointment">Añadir cita</a>
+</div>
+  
+  {{/if}}
+</div>
+<script src="/javascripts/createPet/script.js"></script> 

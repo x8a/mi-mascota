@@ -1,0 +1,15 @@
+<div class="container mt-4">
+  <h2 class="w-100 text-center">Iniciar sesión</h2>
+  <form class="form-group mx-5"  action="/login" method="POST">
+    <label class="mt-3" for="username">Usuario</label>
+    <input type="text" class="form-control" name="username" placeholder="Usuario"/>
+    <label class="mt-3" for="password">Contraseña</label>
+    <input type="password" class="form-control" name="password" placeholder="********"/>
+    <div class="text-center">
+      <button class="btn btn-success mt-4" type="submit">Iniciar sesión</button>
+    </div>
+  </form>
+  {{#if errorMessage}}
+  <p class="error">{{errorMessage}}</p>
+  {{/if}}
+</div>

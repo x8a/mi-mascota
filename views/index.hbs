@@ -1,2 +1,24 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<div class="container text-center">
+  {{#if userInSession}}
+  <h1>{{title}}</h1>
+  <h5>La salud de tu mascota en una app!</h5>
+  <p class="mt-5">En <b>Mi Mascota</b>, puedes registrar los detalles de tus mascotas:</p>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Fecha de nacimiento y raza</li>
+    <li class="list-group-item">Condiciones pre-existentes</li>
+    <li class="list-group-item">Citas con tu veterinarix</li>
+  </ul>
+  {{else}}
+  <h1>{{title}}</h1>
+  <h5>La salud de tu mascota en una app!</h5>
+  <p class="text-left mt-5">En <b>Mi Mascota</b>, puedes registrar los detalles de tus mascotas:</p>
+  <ul class="list-group list-group-flush mx-5">
+    <li class="list-group-item">Fecha de nacimiento y raza</li>
+    <li class="list-group-item">Condiciones pre-existentes</li>
+    <li class="list-group-item">Citas con tu veterinarix</li>
+  </ul>
+  <a class="nav-link btn btn-primary mt-5 mx-4" href="/signup">Crear cuenta</a>
+  <a class="nav-link btn btn-success mt-3 mx-4" href="/login">Iniciar sesión</a>
+  <a class="nav-link btn btn-warning mt-3 mx-4" href="/auth/google"><i class="fab fa-google mr-2"></i>Inicia sesión con Google</a>
+  {{/if}}
+</div>

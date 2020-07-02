@@ -1,0 +1,35 @@
+{{#if userInSession}}
+<h2 class="text-center">Añade tu mascota</h2>
+<form class="form-group mx-5" action="/addPet" method="POST" enctype="multipart/form-data">
+  <label for="profilePicContainer">Foto</label>
+  <div class="custom-file" id="profilePicContainer">
+    <input type="file" class="custom-file-input" id="profilePic" name="profilePic" accept="image/png, image/jpeg">
+    <label class="custom-file-label form-control" for="profilePic" id="profilePicName">Elige un archivo</label>
+  </div>
+  <label for="name">Nombre</label>
+  <input class="form-control" type="text" name="name" required />
+  <label for="animal">Tipo</label>
+  <select class="form-control" name="animal" required>
+    <option value="Gato">Gato</option>
+    <option value="Perro">Perro</option>
+  </select>
+  <label for="breed">Raza</label>
+  <input class="form-control" type="text" name="breed" required />
+  <label for="birthdate">Fecha de nacimiento</label>
+  <input class="form-control" type="date" id="petBirth" name="birthdate" placeholder="Puede ser aproximada" required />
+  <label for="age">Edad</label>
+  <input class="form-control" type="number" id="petAge" name="age" min="1" readonly required />
+  <div class="d-flex mt-3">
+    <button class="btn btn-secondary w-50 mr-1"><a href="/pets"
+        class="text-decoration-none text-white">Cancelar</a></button>
+    <button class="btn btn-success w-50" type="submit">Añadir mascota</button>
+  </div>
+</form>
+{{#if errorMessage}}
+<p>{{errorMessage}}</p>
+{{/if}}
+{{else}}
+<p>Por favor inicia sesión para acceder a esta págin.</p>
+{{/if}}
+<script src="/javascripts/createPet/petAge.js"></script>
+<script src="/javascripts/formsScripts/fileName.js"></script>
