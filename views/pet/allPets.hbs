@@ -1,27 +1,26 @@
-<h2 class="mt-4 mb-4 text-center">Mis mascotas</h2>
-<div class="container">
-  {{#each myPets}}
-  <a href="pet-profile/{{this._id}}" class="noTextDecorUni">
-  <div class="customCard mb-3">
-    <div class="customCardImg">
-      <img src="{{this.pic}}" alt="pet picture">
-    </div>
-    <div class="customCardDetails">
-      <p><span class="font-weight-bold">Nombre:</span> {{this.name}}</p>
-      <p><span class="font-weight-bold">Edad:</span> {{this.age}} años</p>
-    </div>
-  </div>
-  </a>
-  {{else}}
+<h2 class="mt-3 mb-4 text-center">Mis mascotas</h2>
+  <div class="container">
+    {{#each myPets}}
+    <a href="pet-profile/{{this._id}}" class="noTextDecorUni">
+      <div class="customCard mb-3">
+        <div class="customCardImg">
+          <img src="{{this.pic}}" alt="pet picture">
+        </div>
+        <div class="customCardDetails">
+          <p><span class="font-weight-bold">Nombre:</span> {{this.name}}</p>
+          <p><span class="font-weight-bold">Edad:</span> {{this.age}} años</p>
+        </div>
+      </div>
+    </a>
+    {{else}}
     <p class="text-center">No tienes ninguna mascota registrada.</p>
-  {{/each}}
-</div>
-<div class="text-center">
-  <a class="btn btn-info" href="/addPet">Añadir mascota</a>
-</div>
+    {{/each}}
+  </div>
+  <div class="text-center">
+    <a class="btn btn-info" href="/addPet">Añadir mascota</a>
+  </div>
 
 
- 
 
 <!-- 
   <span>Photo by <a href="https://unsplash.com/@majomaya?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Yan Laurichesse</a> on <a href="/s/photos/cat-and-dog?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
