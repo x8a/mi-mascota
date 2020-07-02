@@ -35,7 +35,6 @@ router.post("/edit/user-profile", uploadUserPic.single('profilePic'), async (req
       _id: userId
     } = req.session.currentUser
     const updatedUser = await User.findByIdAndUpdate(userId, req.body, {new: true});
-    console.log(req.file)
     if(req.file) {
       const updatedUser = await User.updateOne({ _id : userId }, { $set: { "profilePic" : req.file.path } })
     }
@@ -49,7 +48,6 @@ router.post("/edit/user-profile", uploadUserPic.single('profilePic'), async (req
 router.post("/edit/pwd", async (req, res, next) => {
   try {  
     const {_id: userId} = req.session.currentUser
-    console.log(userId)
     const {newPassword, oldPassword} = req.body
     if (newPassword) {
       const updatePassword = await updatePasswordHandler(newPassword, oldPassword, userId)
@@ -66,14 +64,13 @@ const updatePasswordHandler = async (newPassword, oldPassword, userId) => {
     const salt = await bcrypt.genSalt(saltRounds);
     const {passwordHash} = await User.findById({_id: userId});
     const verifyPass = await bcrypt.compare(oldPassword, passwordHash);
-    console.log(verifyPass)
     if (verifyPass) {
       const hashNewPassword = await bcrypt.hash(newPassword, salt)
       const updatedUser = await User.findByIdAndUpdate(userId, {passwordHash: hashNewPassword}, {new: true});
       return updateUser
     }
   } catch (err) {
-   console.log(err)
+    console.log(err)
     return err
   }
 }
